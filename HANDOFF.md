@@ -1,4 +1,4 @@
-# HANDOFF – Marcador Voleibol Alevín
+# HANDOFF – VoleyLED (Marcador Voleibol Alevín)
 
 ## Estado actual (PWA completada)
 - `index.html`: app única, 100% offline (sin CDN). Dígitos LED de 7 segmentos en SVG propio, fibra de carbono, marcos metálicos.
