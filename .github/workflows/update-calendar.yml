@@ -1,0 +1,29 @@
+name: Actualizar Calendario FEDEXVB
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Descargar calendario FEDEXVB 3F GB
+        run: python calendario_gb.py
+      - name: Publicar cambios si hay novedades
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add calendario/
+          if ! git diff --cached --quiet; then
+            git commit -m "Auto-sync calendario FEDEXVB 3F GB"
+            git push
+          fi

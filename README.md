@@ -20,6 +20,7 @@ Marcador táctil deportivo para partidos de voleibol categoría **Alevín**, pen
 - **Pitido sintético (WebAudio):** 2 pitidos al fin de set y 3 al fin de partido, sin archivos de audio externos. Botón **Sonido ON/OFF**.
 - **Pantalla siempre encendida (Wake Lock):** botón **Pantalla ON/OFF** con preferencia recordada.
 - **Pantalla completa:** botón **Completa / Salir** y apertura directa a pantalla completa al instalar la PWA.
+- **Calendario Alevín integrado (`Partidos Alevín`):** ventana con los partidos pendientes de **E.D. SALESIANOS A** (categoría únicamente **ALEVÍN**) sincronizada con [FEDEXVB 3ª Femenino GB](https://fedexvoleibol.com/calendario-tercera-femenino-gb), con botón **Cargar** para llevar cualquier enfrentamiento al marcador con un toque.
 - **100 % offline:** dígitos LED de 7 segmentos en SVG propio, sin CDN ni fuentes externas, y estado persistido en `localStorage`.
 
 ---

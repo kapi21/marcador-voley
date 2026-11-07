@@ -141,6 +141,34 @@ footer.bar{min-height:2.1rem}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
 .sub{font:700 .72rem var(--ui);letter-spacing:.06em;color:#aab3c5;margin-top:.3rem;text-transform:none}
 
+/* ---------- Modal Calendario Alevín Salesianos ---------- */
+.mb.cal{height:1.75rem;padding:0 .6rem;font-size:.72rem;border-color:rgba(255,184,28,.55);color:var(--amber);background:linear-gradient(180deg,#2d2618,#17140d)}
+.mb.cal .st{background:rgba(255,184,28,.18);padding:.05rem .38rem;border-radius:.3rem;color:#fff}
+.box.calbox{max-width:44rem;max-height:90vh;display:flex;flex-direction:column;text-align:left;padding:.75rem .9rem}
+.cal-hd{display:flex;align-items:center;justify-content:space-between;gap:.5rem;padding-bottom:.45rem;border-bottom:1px solid #3a4150;flex-shrink:0}
+.cal-tt h2{margin:0;font-size:1.1rem;letter-spacing:.1em}
+.cal-tt p{font:700 .68rem var(--ui);color:#94a3b8;letter-spacing:.06em;text-transform:uppercase;margin-top:.1rem}
+.cal-list{flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:.4rem;padding:.5rem .25rem .5rem 0;touch-action:pan-y;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:#3a4150 #090c12}
+.cal-list::-webkit-scrollbar{width:6px}
+.cal-list::-webkit-scrollbar-track{background:#090c12;border-radius:4px}
+.cal-list::-webkit-scrollbar-thumb{background:#3a4150;border-radius:4px}
+.cal-item{display:grid;grid-template-columns:3rem 7.8rem 1fr auto;align-items:center;gap:.5rem;padding:.42rem .55rem;border-radius:.55rem;background:#090c12;border:1px solid #262c3a}
+.cal-item.today{border-color:var(--amber);box-shadow:0 0 10px rgba(255,184,28,.2)}
+.cal-j{font:400 1.05rem/1 var(--cond);color:var(--amber);background:#161b26;border:1px solid #333b4d;border-radius:.35rem;padding:.28rem 0;text-align:center;letter-spacing:.06em}
+.cal-dt{display:flex;flex-direction:column;font:700 .72rem/1.25 var(--ui);color:#e2e8f0}
+.cal-dt small{font-weight:600;font-size:.65rem;color:#94a3b8}
+.cal-mt{display:flex;flex-direction:column;min-width:0;gap:.12rem}
+.cal-tms{font:400 .95rem/1.15 var(--cond);letter-spacing:.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cal-tms .sal{color:var(--red)} .cal-tms .riv{color:var(--blue)} .cal-tms i{color:#64748b;font-style:normal;margin:0 .25rem}
+.cal-loc{display:flex;align-items:center;gap:.35rem;font:600 .65rem var(--ui);color:#94a3b8}
+.cal-badge{padding:.05rem .32rem;border-radius:.25rem;font:800 .58rem var(--ui);letter-spacing:.06em}
+.cal-badge.hm{background:rgba(255,42,61,.18);color:#ff6b78;border:1px solid rgba(255,42,61,.4)}
+.cal-badge.aw{background:rgba(31,162,255,.18);color:#6bc2ff;border:1px solid rgba(31,162,255,.4)}
+.cal-load{height:2rem;padding:0 .65rem;border-radius:.45rem;background:linear-gradient(180deg,#2563eb,#1d4ed8);border:1px solid #60a5fa;font:800 .68rem var(--ui);letter-spacing:.05em;text-transform:uppercase;color:#fff;white-space:nowrap}
+.cal-ft{display:flex;align-items:center;justify-content:space-between;gap:.5rem;padding-top:.4rem;border-top:1px solid #262c3a;font:600 .65rem var(--ui);color:#94a3b8;flex-shrink:0}
+.cal-ft a{color:#60a5fa;text-decoration:none}
+@media (max-width:640px){.cal-item{grid-template-columns:2.5rem 6.4rem 1fr auto;gap:.35rem;padding:.35rem}}
+
 /* ---------- Aviso vertical ---------- */
 #rot{display:none;position:fixed;inset:0;z-index:50;background:#06080c;flex-direction:column;align-items:center;justify-content:center;gap:1rem;text-align:center;padding:1.5rem}
 #rot .ic{font-size:4rem;color:#22d3ee;animation:tilt 1.6s ease-in-out infinite}
@@ -167,6 +195,7 @@ body.standalone #fs-btn{display:none}
  <symbol id="i-sound" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9zM16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11"/></symbol>
  <symbol id="i-ball" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#fff8e6" stroke="#1b2442" stroke-width="1.2"/><path d="M12 1.2c-1 5-.5 9 3 12.6M2.3 7c4.700 0 8.200 2.200 9.700 5M21.700 7.500c-4.300 1-7.200 3.800-8.500 8.500M12 23c.8-4.500 3.200-7.300 6.800-9" fill="none" stroke="#1b2442" stroke-width="1.2" stroke-linecap="round"/><path d="M12 1.200C16.500 3 20 6.300 21.700 7.500c-4.300 1-7.200 3.800-8.500 8.500C11 14 11 7 12 1.200z" fill="#ffc420" opacity=".85" stroke="none"/><path d="M2.300 7C4 4 7 2.200 12 1.200c-1 5.800-1 10.800 0 10.800-3.200-2.700-6.300-4.500-9.700-5z" fill="#2f78e0" opacity=".85" stroke="none"/></symbol>
  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM14 6l4 4"/></symbol>
+ <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></symbol>
  <symbol id="i-rot" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></symbol>
 </defs></svg>
 
@@ -206,7 +235,11 @@ body.standalone #fs-btn{display:none}
 
 <footer class="bar">
   <div class="grp"><span class="lbl">Parciales</span><div class="pills" id="pills"></div></div>
-  <span class="lbl" id="foot-r"></span>
+  <div class="grp">
+    <button class="mb cal tap" id="btn-cal" title="Partidos pendientes E.D. Salesianos A (Liga Alevín)">
+      <svg><use href="#i-cal"/></svg><span>Partidos Alevín</span><span class="st" id="cal-cnt">8</span>
+    </button>
+  </div>
 </footer>
 
 <!-- Fin de set -->
@@ -241,6 +274,25 @@ body.standalone #fs-btn{display:none}
     <button class="btn dng tap" id="r-all"><svg><use href="#i-trash"/></svg>Todo</button>
   </div>
   <div class="row"><button class="btn tap" id="r-cancel"><svg><use href="#i-x"/></svg>Cancelar</button></div>
+</div></div>
+
+<!-- Calendario Partidos Pendientes E.D. SALESIANOS A (ALEVIN) -->
+<div class="ov" id="m-cal"><div class="box calbox">
+  <div class="cal-hd">
+    <div class="cal-tt">
+      <h2>Partidos pendientes · E.D. SALESIANOS A</h2>
+      <p>Liga 3ª Femenino GB · Categoría únicamente ALEVÍN</p>
+    </div>
+    <div class="grp">
+      <button class="mb tap" id="cal-sync" title="Actualizar desde FEDEXVB"><svg><use href="#i-reset"/></svg><span class="tx">Actualizar</span></button>
+      <button class="mb tap" id="cal-close" aria-label="Cerrar"><svg><use href="#i-x"/></svg></button>
+    </div>
+  </div>
+  <div class="cal-list" id="cal-list"></div>
+  <div class="cal-ft">
+    <span id="cal-status">Fuente oficial FEDEXVB · Toca «Cargar» para llevar el partido al marcador</span>
+    <a href="https://fedexvoleibol.com/calendario-tercera-femenino-gb" target="_blank" rel="noopener">Ver web FEDEXVB ↗</a>
+  </div>
 </div></div>
 
 <script>
@@ -434,6 +486,136 @@ document.addEventListener('webkitfullscreenchange', paintFS);
 if (!(document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen)) $('fs-btn').style.display = 'none';
 if (matchMedia('(display-mode: fullscreen), (display-mode: standalone)').matches) document.body.classList.add('standalone');
 
+/* ---------- Calendario Partidos Pendientes (E.D. SALESIANOS A · ALEVIN) ---------- */
+const CAL_KEY = 'marcador_voley_cal_v1';
+const CAL_IFRAME = 'https://resultados.fedexvoleibol.com/calendar.php?grupo=147';
+let calData = [
+  { jornada:1, fecha:'2026-10-16', dia:'Viernes', hora:'', local:'E.D. SALESIANOS A', resultado:'2 - 0', visitante:'ESCUELA DEPORTIVA GUADALUPE A', pabellon:'IES ZURBARAN', pendiente:false },
+  { jornada:2, fecha:'2026-10-25', dia:'Domingo', hora:'', local:'G.M.D. OLIVENZA A', resultado:'2 - 1', visitante:'E.D. SALESIANOS A', pabellon:'P. Municipal', pendiente:false },
+  { jornada:3, fecha:'2026-11-07', dia:'Sabado', hora:'10:00', local:'E.D. SALESIANOS A', resultado:'vs', visitante:'CD LA ALBUERA VOLEY A', pabellon:'IES ZURBARAN', pendiente:true },
+  { jornada:4, fecha:'2026-11-15', dia:'Domingo', hora:'Pdte-local', local:'E.D. SALESIANOS A', resultado:'vs', visitante:'VOLEIBOL A7 AZUL B', pabellon:'P. Municipal', pendiente:true },
+  { jornada:5, fecha:'2026-11-22', dia:'Domingo', hora:'Pdte-local', local:'CLUB PACENSE VOLEIBOL ALEVIN B', resultado:'vs', visitante:'E.D. SALESIANOS A', pabellon:'P. Municipal', pendiente:true },
+  { jornada:6, fecha:'2026-12-11', dia:'Viernes', hora:'17:00', local:'ESCUELA DEPORTIVA GUADALUPE A', resultado:'vs', visitante:'E.D. SALESIANOS A', pabellon:'Pabellón EVG Badajoz', pendiente:true },
+  { jornada:7, fecha:'2026-12-20', dia:'Domingo', hora:'Pdte-local', local:'E.D. SALESIANOS A', resultado:'vs', visitante:'G.M.D. OLIVENZA A', pabellon:'P. Municipal', pendiente:true },
+  { jornada:8, fecha:'2027-01-16', dia:'Sabado', hora:'11:00', local:'CD LA ALBUERA VOLEY A', resultado:'vs', visitante:'E.D. SALESIANOS A', pabellon:'P. Municipal', pendiente:true },
+  { jornada:9, fecha:'2027-01-31', dia:'Domingo', hora:'Pdte-local', local:'VOLEIBOL A7 AZUL B', resultado:'vs', visitante:'E.D. SALESIANOS A', pabellon:'P. Municipal', pendiente:true },
+  { jornada:10, fecha:'2027-02-21', dia:'Domingo', hora:'Pdte-local', local:'E.D. SALESIANOS A', resultado:'vs', visitante:'CLUB PACENSE VOLEIBOL ALEVIN B', pabellon:'P. Municipal', pendiente:true }
+];
+try {
+  const savedCal = JSON.parse(localStorage.getItem(CAL_KEY));
+  if (Array.isArray(savedCal) && savedCal.length) calData = savedCal;
+} catch(e){}
+
+function shortTeamName(full){
+  const u = full.toUpperCase();
+  if (u.includes('SALESIANOS')) return 'Salesianos';
+  if (u.includes('ALBUERA')) return 'La Albuera';
+  if (u.includes('GUADALUPE')) return 'Guadalupe';
+  if (u.includes('OLIVENZA')) return 'Olivenza';
+  if (u.includes('PACENSE')) return 'CPV Pacense B';
+  if (u.includes('A7 AZUL')) return 'Voleibol A7';
+  return full.slice(0, 16);
+}
+function fmtDate(iso){
+  const [y,m,d] = (iso||'').split('-');
+  return d ? `${d}/${m}/${y}` : iso;
+}
+function renderCal(){
+  const pend = calData.filter(m => m.pendiente);
+  $('cal-cnt').textContent = pend.length;
+  const todayIso = new Date().toISOString().slice(0,10);
+  if (!pend.length) {
+    $('cal-list').innerHTML = '<div class="cal-item" style="grid-template-columns:1fr;text-align:center">No quedan partidos Alevín pendientes para E.D. SALESIANOS A.</div>';
+    return;
+  }
+  $('cal-list').innerHTML = pend.map((m, idx) => {
+    const isHome = m.local.toUpperCase().includes('SALESIANOS');
+    const rival = isHome ? m.visitante : m.local;
+    const tms = isHome
+      ? `<span class="sal">${m.local}</span><i>vs</i><span class="riv">${m.visitante}</span>`
+      : `<span class="riv">${m.local}</span><i>vs</i><span class="sal">${m.visitante}</span>`;
+    const horaTxt = !m.hora ? 'Hora pdte.' : (m.hora.startsWith('Pdte') ? 'Hora pdte. local' : m.hora + ' h');
+    return `<div class="cal-item${m.fecha===todayIso?' today':''}">
+      <div class="cal-j">J${m.jornada}</div>
+      <div class="cal-dt"><span>${fmtDate(m.fecha)}</span><small>${m.dia} · ${horaTxt}</small></div>
+      <div class="cal-mt">
+        <div class="cal-tms">${tms}</div>
+        <div class="cal-loc"><span class="cal-badge ${isHome?'hm':'aw'}">${isHome?'CASA':'FUERA'}</span><span>📍 ${m.pabellon || 'Por definir'}</span></div>
+      </div>
+      <button class="cal-load tap" data-rival="${rival}" data-home="${isHome?'1':'0'}">Cargar</button>
+    </div>`;
+  }).join('');
+  $('cal-list').querySelectorAll('.cal-load').forEach(b => {
+    b.onclick = () => {
+      const rival = b.getAttribute('data-rival');
+      const isHome = b.getAttribute('data-home') === '1';
+      names.A = 'Salesianos';
+      names.B = shortTeamName(rival);
+      S.left = isHome ? 'A' : 'B';
+      commit();
+      $('m-cal').classList.remove('show');
+    };
+  });
+}
+function parseFedexHTML(raw){
+  const doc = new DOMParser().parseFromString(raw, 'text/html');
+  doc.querySelectorAll('script,style').forEach(el => el.remove());
+  let h = doc.body ? doc.body.innerHTML : raw;
+  h = h.replace(/<\/(tr|p|h\d|li|div)>/gi, '\n').replace(/<\/t[dh]>/gi, ' | ').replace(/<[^>]+>/g, '');
+  const txt = new DOMParser().parseFromString(h, 'text/html').documentElement.textContent || '';
+  const lines = txt.split('\n').map(l => l.replace(/\s+/g, ' ').trim()).filter(Boolean);
+  const out = []; let jornada = 0;
+  for (let i = 0; i < lines.length; i++) {
+    let m = lines[i].match(/^JORNADA (\d+)/i);
+    if (m) { jornada = parseInt(m[1], 10); continue; }
+    m = lines[i].match(/^(\d{4}\/\d\d\/\d\d) \| (.+?) \| (\d+ - \d+|vs) \| (.+?) \|$/i);
+    if (m && i + 1 < lines.length) {
+      const [, fecha, local, res, visit] = m;
+      const d = lines[i + 1].replace(/\|$/, '').trim();
+      const [dia, ...restParts] = d.split(' | ');
+      const resto = restParts.join(' | ');
+      const mm = resto.match(/^([A-ZÁÉÍÓÚ]+)(?: \(([^)]*)\))?(?: (\d{1,2}[:.]\d{2}|Pdte-[^\s]+))? ?(.*)/i);
+      const cat = mm ? mm[1].toUpperCase() : resto;
+      const hora = mm && mm[3] ? mm[3].replace('.', ':') : '';
+      const pab = mm && mm[4] ? mm[4].trim() : '';
+      if (cat === 'ALEVIN' && (local.toUpperCase().includes('SALESIANOS') || visit.toUpperCase().includes('SALESIANOS'))) {
+        out.push({ jornada, fecha: fecha.replace(/\//g, '-'), dia, hora, local, resultado: res, visitante: visit, pabellon: pab, pendiente: res.trim().toLowerCase() === 'vs' });
+      }
+      i++;
+    }
+  }
+  return out;
+}
+async function syncCal(manual = false){
+  if (manual) $('cal-status').textContent = 'Sincronizando con FEDEXVB…';
+  try {
+    const r = await fetch('./calendario/salesianos_alevin.json?t=' + Date.now(), { cache: 'no-store' });
+    if (r.ok) {
+      const j = await r.json();
+      if (j && Array.isArray(j.partidos) && j.partidos.length) {
+        calData = j.partidos;
+        localStorage.setItem(CAL_KEY, JSON.stringify(calData));
+        renderCal();
+      }
+    }
+  } catch(e){}
+  try {
+    const proxy = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(CAL_IFRAME);
+    const r2 = await fetch(proxy, { cache: 'no-store' });
+    if (r2.ok) {
+      const parsed = parseFedexHTML(await r2.text());
+      if (parsed.length) {
+        calData = parsed;
+        localStorage.setItem(CAL_KEY, JSON.stringify(calData));
+        renderCal();
+        if (manual) $('cal-status').textContent = 'Actualizado en directo desde FEDEXVB · ' + new Date().toLocaleTimeString('es-ES', {hour:'2-digit', minute:'2-digit'});
+        return;
+      }
+    }
+  } catch(e){}
+  if (manual) $('cal-status').textContent = 'Calendario al día (FEDEXVB) · Toca «Cargar» para llevar al marcador';
+}
+
 /* ---------- Eventos ---------- */
 /* Gestos por marcador: toque o desliz ↓ = +1 · desliz ↑ = −1 (cada lado por separado) */
 function gestures(elId, team){
@@ -476,9 +658,13 @@ $('m-set-undo').onclick = undo;
 $('m-new').onclick = resetAll;
 $('m-match-undo').onclick = undo;
 $('m-match-close').onclick = () => { S.modal = null; commit(); };
+$('btn-cal').onclick = () => { renderCal(); $('m-cal').classList.add('show'); syncCal(false); };
+$('cal-close').onclick = () => $('m-cal').classList.remove('show');
+$('cal-sync').onclick = () => syncCal(true);
+$('m-cal').addEventListener('click', e => { if (e.target === $('m-cal')) $('m-cal').classList.remove('show'); });
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') requestWake(); });
 
-load(); render(); paintWake(); paintFS(); paintSound();
+load(); render(); paintWake(); paintFS(); paintSound(); renderCal(); syncCal(false);
 window.addEventListener('load', requestWake);
 
 /* ---------- PWA ---------- */

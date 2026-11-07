@@ -1,8 +1,8 @@
 """Descarga y guarda el calendario 3ª Femenino GB (FEDEXVB) en calendario/.
 Uso: python calendario_gb.py        (vuelve a ejecutarlo para actualizar resultados)
-Genera: calendario/calendario_3F_GB.csv, calendario/calendario_3F_GB.md, calendario/raw.html
+Genera: calendario/calendario_3F_GB.csv, calendario/calendario_3F_GB.md, calendario/salesianos_alevin.json, calendario/raw.html
 """
-import csv, html, os, re, urllib.request
+import csv, datetime, html, json, os, re, urllib.request
 
 URL = "https://resultados.fedexvoleibol.com/calendar.php?grupo=147"
 FUENTE = "https://fedexvoleibol.com/calendario-tercera-femenino-gb"
@@ -30,9 +30,10 @@ while i < len(lines):
         fecha, local, res, visit = m.groups()
         d = lines[i + 1].rstrip("|").strip()
         dia, _, resto = d.partition(" | ")
-        mm = re.match(r"([A-ZÁÉÍÓÚ]+)(?: \(([^)]*)\))?(?: (\d{1,2}:\d{2}))? ?(.*)", resto)
+        mm = re.match(r"([A-ZÁÉÍÓÚ]+)(?: \(([^)]*)\))?(?: (\d{1,2}[:.]\d{2}|Pdte-[^\s]+))? ?(.*)", resto)
         cat, sets, hora, lugar = (mm.groups() if mm else (resto, "", "", ""))
-        rows.append([jornada, fecha.replace("/", "-"), dia, hora or "", cat, local, res, visit, sets or "", lugar.strip()])
+        hora = (hora or "").replace(".", ":")
+        rows.append([jornada, fecha.replace("/", "-"), dia, hora, cat, local, res, visit, sets or "", lugar.strip()])
         i += 2; continue
     i += 1
 
@@ -50,5 +51,30 @@ for j in sorted({r[0] for r in rows}, key=int):
 mio = [r for r in rows if re.search(r"ALBUERA|ZURBARAN|SALESIANOS", " ".join([r[5], r[7], r[9]]).upper())]
 md += "## Filtro: La Albuera / Salesianos / IES Zurbarán\n\n" + tabla(mio)
 open(f"{OUT}/calendario_3F_GB.md", "w", encoding="utf-8").write(md)
-print(len(rows), "partidos guardados en", OUT)
 
+alevin_salesianos = [
+    {
+        "jornada": int(r[0]),
+        "fecha": r[1],
+        "dia": r[2],
+        "hora": r[3],
+        "local": r[5],
+        "resultado": r[6],
+        "visitante": r[7],
+        "sets": r[8],
+        "pabellon": r[9],
+        "pendiente": r[6].strip().lower() == "vs",
+    }
+    for r in rows
+    if r[4].upper() == "ALEVIN" and ("E.D. SALESIANOS A" in (r[5].upper(), r[7].upper()))
+]
+payload = {
+    "equipo": "E.D. SALESIANOS A",
+    "categoria": "ALEVIN",
+    "fuente": FUENTE,
+    "iframe": URL,
+    "actualizado": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+    "partidos": alevin_salesianos,
+}
+open(f"{OUT}/salesianos_alevin.json", "w", encoding="utf-8").write(json.dumps(payload, ensure_ascii=False, indent=2))
+print(len(rows), "partidos guardados en", OUT, "|", sum(p["pendiente"] for p in alevin_salesianos), "pendientes Alevín Salesianos")

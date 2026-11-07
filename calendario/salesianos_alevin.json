@@ -1,0 +1,129 @@
+{
+  "equipo": "E.D. SALESIANOS A",
+  "categoria": "ALEVIN",
+  "fuente": "https://fedexvoleibol.com/calendario-tercera-femenino-gb",
+  "iframe": "https://resultados.fedexvoleibol.com/calendar.php?grupo=147",
+  "actualizado": "2026-11-07T14:35:23Z",
+  "partidos": [
+    {
+      "jornada": 1,
+      "fecha": "2026-10-16",
+      "dia": "Viernes",
+      "hora": "",
+      "local": "E.D. SALESIANOS A",
+      "resultado": "2 - 0",
+      "visitante": "ESCUELA DEPORTIVA GUADALUPE A",
+      "sets": "25-14/25-16/0-0",
+      "pabellon": "IES ZURBARAN",
+      "pendiente": false
+    },
+    {
+      "jornada": 2,
+      "fecha": "2026-10-25",
+      "dia": "Domingo",
+      "hora": "",
+      "local": "G.M.D. OLIVENZA A",
+      "resultado": "2 - 1",
+      "visitante": "E.D. SALESIANOS A",
+      "sets": "13-25/25-17/25-13",
+      "pabellon": "P. Municipal",
+      "pendiente": false
+    },
+    {
+      "jornada": 3,
+      "fecha": "2026-11-07",
+      "dia": "Sabado",
+      "hora": "10:00",
+      "local": "E.D. SALESIANOS A",
+      "resultado": "vs",
+      "visitante": "CD LA ALBUERA VOLEY A",
+      "sets": "",
+      "pabellon": "IES ZURBARAN",
+      "pendiente": true
+    },
+    {
+      "jornada": 4,
+      "fecha": "2026-11-15",
+      "dia": "Domingo",
+      "hora": "Pdte-local",
+      "local": "E.D. SALESIANOS A",
+      "resultado": "vs",
+      "visitante": "VOLEIBOL A7 AZUL B",
+      "sets": "",
+      "pabellon": "P. Municipal",
+      "pendiente": true
+    },
+    {
+      "jornada": 5,
+      "fecha": "2026-11-22",
+      "dia": "Domingo",
+      "hora": "Pdte-local",
+      "local": "CLUB PACENSE VOLEIBOL ALEVIN B",
+      "resultado": "vs",
+      "visitante": "E.D. SALESIANOS A",
+      "sets": "",
+      "pabellon": "P. Municipal",
+      "pendiente": true
+    },
+    {
+      "jornada": 6,
+      "fecha": "2026-12-11",
+      "dia": "Viernes",
+      "hora": "17:00",
+      "local": "ESCUELA DEPORTIVA GUADALUPE A",
+      "resultado": "vs",
+      "visitante": "E.D. SALESIANOS A",
+      "sets": "",
+      "pabellon": "Pabellón EVG Badajoz",
+      "pendiente": true
+    },
+    {
+      "jornada": 7,
+      "fecha": "2026-12-20",
+      "dia": "Domingo",
+      "hora": "Pdte-local",
+      "local": "E.D. SALESIANOS A",
+      "resultado": "vs",
+      "visitante": "G.M.D. OLIVENZA A",
+      "sets": "",
+      "pabellon": "P. Municipal",
+      "pendiente": true
+    },
+    {
+      "jornada": 8,
+      "fecha": "2027-01-16",
+      "dia": "Sabado",
+      "hora": "11:00",
+      "local": "CD LA ALBUERA VOLEY A",
+      "resultado": "vs",
+      "visitante": "E.D. SALESIANOS A",
+      "sets": "",
+      "pabellon": "P. Municipal",
+      "pendiente": true
+    },
+    {
+      "jornada": 9,
+      "fecha": "2027-01-31",
+      "dia": "Domingo",
+      "hora": "Pdte-local",
+      "local": "VOLEIBOL A7 AZUL B",
+      "resultado": "vs",
+      "visitante": "E.D. SALESIANOS A",
+      "sets": "",
+      "pabellon": "P. Municipal",
+      "pendiente": true
+    },
+    {
+      "jornada": 10,
+      "fecha": "2027-02-21",
+      "dia": "Domingo",
+      "hora": "Pdte-local",
+      "local": "E.D. SALESIANOS A",
+      "resultado": "vs",
+      "visitante": "CLUB PACENSE VOLEIBOL ALEVIN B",
+      "sets": "",
+      "pabellon": "P. Municipal",
+      "pendiente": true
+    }
+  ]
+}
