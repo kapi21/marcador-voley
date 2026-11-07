@@ -28,3 +28,8 @@ Indicador de saque, pitido sintético, compartir resultado.
 - Equipo A renombrado: Zurbarán → **Salesianos** (migración automática del nombre guardado).
 - Gestos por marcador: toque o deslizar ↓ = +1, deslizar ↑ = −1 (cada lado independiente; el deshacer global sigue disponible).
 - Logo nuevo (marcador LED rojo/azul + balón) generado con `make_icons.py`. SW `marcador-v4`.
+
+## Cambios 07/11 (saque y sonido)
+- Indicador de saque: balón en la esquina inferior derecha del marcador que saca. Punto directo: saca quien gana el punto. Saque inicial: set 1 elegible tocando el balón al 0-0 (por defecto Salesianos); sets siguientes alternan. Tocar el balón en cualquier momento corrige quién saca (con deshacer).
+- Pitido sintético (WebAudio) al acabar set (2 pitidos) y partido (3). Botón Sonido ON/OFF (preferencia guardada).
+- Textos de ayuda más abajo y marcador con más margen. SW `marcador-v5`.

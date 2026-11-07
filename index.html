@@ -43,15 +43,15 @@ button{font:inherit;color:inherit;border:0;cursor:pointer}
   box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 2px 6px rgba(0,0,0,.6);
 }
 header.bar{min-height:2.7rem}
-.grp{display:flex;align-items:center;gap:.4rem}
+.grp{display:flex;align-items:center;gap:.3rem}
 .setchip{
-  display:flex;align-items:baseline;gap:.35rem;padding:.12rem .7rem;border-radius:.4rem;background:#05070a;border:1px solid #000;
+  display:flex;white-space:nowrap;flex-shrink:0;align-items:baseline;gap:.35rem;padding:.12rem .7rem;border-radius:.4rem;background:#05070a;border:1px solid #000;
   box-shadow:inset 0 0 8px rgba(0,0,0,.9),0 0 0 1px #3a4150;font-family:var(--cond);letter-spacing:.08em;color:var(--amber);
   text-shadow:0 0 8px rgba(255,184,28,.6);font-size:1.15rem;line-height:1.3;text-transform:uppercase
 }
 .setchip small{font-size:.7rem;color:#c9a14a;text-shadow:none;letter-spacing:.12em}
 .mb{
-  display:flex;align-items:center;gap:.4rem;height:2.1rem;padding:0 .65rem;border-radius:.5rem;
+  display:flex;align-items:center;gap:.35rem;height:2.1rem;padding:0 .5rem;border-radius:.5rem;
   background:linear-gradient(180deg,#3a4150,#222733);border:1px solid #4a5263;color:#eef2f7;
   font:700 .78rem var(--ui);letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.15)
@@ -92,14 +92,21 @@ main{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
 .setsbox b{font:700 .6rem var(--ui);letter-spacing:.18em;color:#cbd5e1}
 .setsbox svg.seg{width:auto;height:clamp(1.6rem,7vh,2.6rem);stroke:none;color:var(--amber)}
 .screen{
-  flex:1;min-height:0;position:relative;cursor:pointer;touch-action:none;display:flex;align-items:center;justify-content:center;padding:.4rem .6rem .9rem;
+  flex:1;min-height:0;position:relative;cursor:pointer;touch-action:none;display:flex;align-items:center;justify-content:center;padding:.4rem .6rem 2.1rem;
   background:
     radial-gradient(ellipse at 50% 40%,var(--glow) -40%,transparent 62%),
     repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 3px),
     #05070a;
 }
 .screen::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(165deg,rgba(255,255,255,.1) 0%,transparent 38%)}
-.screen .hint{position:absolute;bottom:.3rem;left:0;right:0;text-align:center;font:700 .62rem var(--ui);letter-spacing:.2em;color:rgba(255,255,255,.35);text-transform:uppercase}
+.screen .hint{position:absolute;bottom:.55rem;left:16%;right:16%;text-align:center;font:700 .62rem var(--ui);letter-spacing:.2em;color:rgba(255,255,255,.35);text-transform:uppercase}
+/* Indicador de saque: balón en la esquina inferior derecha del marcador que saca */
+.serve{position:absolute;right:.5rem;bottom:.35rem;width:clamp(2.3rem,13vh,3.4rem);height:clamp(2.3rem,13vh,3.4rem);padding:0;background:none;z-index:2;
+  filter:drop-shadow(0 0 6px rgba(255,255,255,.55));animation:bounce .5s ease-out;touch-action:none}
+.serve svg{width:100%;height:100%;stroke:none}
+.serve.ghost{opacity:.2;filter:none;animation:none}
+.serve.off{display:none}
+@keyframes bounce{0%{transform:translateY(-.9rem) scale(.8)}60%{transform:translateY(.1rem)}100%{transform:none}}
 svg.seg{fill:currentColor;stroke:none;overflow:visible}
 .score{width:100%;height:100%;color:var(--c)}
 .seg .off{fill:currentColor;opacity:.09}
@@ -157,6 +164,8 @@ body.standalone #fs-btn{display:none}
  <symbol id="i-play" viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z" fill="currentColor"/></symbol>
  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></symbol>
+ <symbol id="i-sound" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9zM16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11"/></symbol>
+ <symbol id="i-ball" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#fff8e6" stroke="#1b2442" stroke-width="1.2"/><path d="M12 1.2c-1 5-.5 9 3 12.6M2.3 7c4.700 0 8.200 2.200 9.700 5M21.700 7.500c-4.300 1-7.200 3.800-8.500 8.500M12 23c.8-4.500 3.200-7.300 6.800-9" fill="none" stroke="#1b2442" stroke-width="1.2" stroke-linecap="round"/><path d="M12 1.200C16.500 3 20 6.300 21.700 7.500c-4.300 1-7.200 3.800-8.500 8.500C11 14 11 7 12 1.200z" fill="#ffc420" opacity=".85" stroke="none"/><path d="M2.300 7C4 4 7 2.200 12 1.200c-1 5.800-1 10.800 0 10.800-3.200-2.700-6.300-4.500-9.700-5z" fill="#2f78e0" opacity=".85" stroke="none"/></symbol>
  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM14 6l4 4"/></symbol>
  <symbol id="i-rot" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></symbol>
 </defs></svg>
@@ -171,7 +180,8 @@ body.standalone #fs-btn{display:none}
   <div class="grp">
     <button class="mb tap" id="btn-undo"><svg><use href="#i-undo"/></svg><span class="tx">Deshacer</span></button>
     <button class="mb tap" id="btn-wake"><svg><use href="#i-sun"/></svg><span class="tx">Pantalla</span><span class="st" id="wake-st">ON</span></button>
-    <button class="mb tap" id="btn-swap"><svg><use href="#i-swap"/></svg><span class="tx">Cambiar campo</span></button>
+    <button class="mb tap" id="btn-sound"><svg><use href="#i-sound"/></svg><span class="tx">Sonido</span><span class="st" id="sound-st">ON</span></button>
+    <button class="mb tap" id="btn-swap"><svg><use href="#i-swap"/></svg><span class="tx">Campo</span></button>
     <button class="mb tap" id="btn-reset"><svg><use href="#i-reset"/></svg><span class="tx">Reiniciar</span></button>
     <button class="mb fs tap" id="fs-btn"><svg id="fs-ic"><use href="#i-expand"/></svg><span class="tx" id="fs-tx">Completa</span></button>
   </div>
@@ -183,14 +193,14 @@ body.standalone #fs-btn{display:none}
       <input class="name" id="n-left" maxlength="16" autocomplete="off" aria-label="Nombre equipo izquierdo"><svg class="edit"><use href="#i-pen"/></svg>
       <div class="setsbox"><b>SETS</b><svg class="seg" id="s-left" viewBox="0 0 60 100"></svg></div>
     </div>
-    <div class="screen tap" id="b-left"><svg class="seg score" id="v-left" viewBox="0 0 130 100" preserveAspectRatio="xMidYMid meet"></svg><span class="hint">Toca o desliza ↓ suma · ↑ resta</span></div>
+    <div class="screen tap" id="b-left"><button class="serve off" id="srv-left" aria-label="Saque"><svg><use href="#i-ball"/></svg></button><svg class="seg score" id="v-left" viewBox="0 0 130 100" preserveAspectRatio="xMidYMid meet"></svg><span class="hint">Toca o desliza ↓ suma · ↑ resta</span></div>
   </div></section>
   <section class="panel t-B" id="p-right"><div class="inner">
     <div class="plate">
       <input class="name" id="n-right" maxlength="16" autocomplete="off" aria-label="Nombre equipo derecho"><svg class="edit"><use href="#i-pen"/></svg>
       <div class="setsbox"><b>SETS</b><svg class="seg" id="s-right" viewBox="0 0 60 100"></svg></div>
     </div>
-    <div class="screen tap" id="b-right"><svg class="seg score" id="v-right" viewBox="0 0 130 100" preserveAspectRatio="xMidYMid meet"></svg><span class="hint">Toca o desliza ↓ suma · ↑ resta</span></div>
+    <div class="screen tap" id="b-right"><button class="serve off" id="srv-right" aria-label="Saque"><svg><use href="#i-ball"/></svg></button><svg class="seg score" id="v-right" viewBox="0 0 130 100" preserveAspectRatio="xMidYMid meet"></svg><span class="hint">Toca o desliza ↓ suma · ↑ resta</span></div>
   </div></section>
 </main>
 
@@ -257,9 +267,11 @@ const scoreSVG = n => {            // dos dígitos, cursiva suave, cero a la izq
 };
 
 /* ---------- Estado ---------- */
-const fresh = () => ({ score:{A:0,B:0}, sets:{A:0,B:0}, left:'A', set:1, hist:[], over:false, modal:null });
+const fresh = () => ({ score:{A:0,B:0}, sets:{A:0,B:0}, left:'A', set:1, hist:[], over:false, modal:null, server:'A', first:'A' });
 let S = fresh(), names = { ...DEFAULT_NAMES }, undoStack = [];
 let wakeLock = null, wakePref = true;
+const SOUND_KEY = 'marcador_voley_sound';
+let soundOn = true, actx = null;
 
 function save(){ try { localStorage.setItem(KEY, JSON.stringify({ S, names, undoStack })); } catch(e){} }
 function load(){
@@ -268,7 +280,9 @@ function load(){
     if (d && d.S && d.names) {
       S = d.S; names = d.names; undoStack = d.undoStack || [];
       if (names.A === 'Zurbarán') names.A = DEFAULT_NAMES.A;   // migración: Zurbarán → Salesianos
+      if (!S.server) { S.server = 'A'; S.first = 'A'; }         // migración: indicador de saque
     }
+    const sd = localStorage.getItem(SOUND_KEY); if (sd !== null) soundOn = sd === '1';
     const w = localStorage.getItem(WAKE_KEY); if (w !== null) wakePref = w === '1';
   } catch(e){}
 }
@@ -280,11 +294,12 @@ const vibrate = p => { try { navigator.vibrate && navigator.vibrate(p); } catch(
 /* ---------- Reglas ---------- */
 function addPoint(id){
   if (S.over || S.modal) return;
-  snap(); S.score[id]++; vibrate(25);
+  snap(); S.score[id]++; S.server = id; vibrate(25);   // punto directo: saca quien gana el punto
   const o = other(id);
   if (S.score[id] >= TARGET && S.score[id] - S.score[o] >= MIN_DIFF) {
     S.sets[id]++; S.hist.push({ A:S.score.A, B:S.score.B, w:id }); vibrate([40,50,40]);
-    if (S.set >= TOTAL_SETS) { S.over = true; S.modal = 'match'; } else S.modal = 'set';
+    if (S.set >= TOTAL_SETS) { S.over = true; S.modal = 'match'; beep([[.25,.1],[.25,.1],[.9,0]]); }
+    else { S.modal = 'set'; beep([[.25,.1],[.7,0]]); }
   }
   commit();
   const el = $(S.left === id ? 'v-left' : 'v-right');
@@ -296,9 +311,17 @@ function subPoint(id){
   const el = $(S.left === id ? 'v-left' : 'v-right');
   el.classList.remove('pop'); void el.offsetWidth; el.classList.add('pop');
 }
-function nextSet(){ snap(); S.set++; S.score = {A:0,B:0}; S.left = other(S.left); S.modal = null; commit(); }
+/* Saque inicial de cada set: set impar = quien abrió el partido, set par = el otro (alternan) */
+const firstServerOfSet = n => n % 2 ? S.first : other(S.first);
+function nextSet(){ snap(); S.set++; S.score = {A:0,B:0}; S.left = other(S.left); S.modal = null; S.server = firstServerOfSet(S.set); commit(); }
 function swapSides(){ snap(); S.left = other(S.left); commit(); }
-function resetSet(){ snap(); S.score = {A:0,B:0}; S.modal = null; commit(); }
+function resetSet(){ snap(); S.score = {A:0,B:0}; S.modal = null; S.server = firstServerOfSet(S.set); commit(); }
+function setServer(id){          // toque manual en el balón: elegir / corregir quién saca
+  if (S.over || S.modal || S.server === id) return;
+  snap(); S.server = id;
+  if (!S.score.A && !S.score.B) S.first = S.set % 2 ? id : other(id);   // al 0-0 fija el saque inicial del set
+  vibrate(15); commit();
+}
 function resetAll(){ S = fresh(); undoStack = []; commit(); }
 
 /* ---------- Render ---------- */
@@ -320,6 +343,7 @@ function render(){
   $('s-right').innerHTML = digit(S.sets[R]);
   $('set-ind').textContent = `${S.set}/${TOTAL_SETS}`;
   $('btn-undo').disabled = !undoStack.length;
+  renderServe();
   $('pills').innerHTML = S.hist.length ? S.hist.map(pillHTML).join('') : '<span class="lbl" style="opacity:.5">—</span>';
 
   $('m-set').classList.toggle('show', S.modal === 'set');
@@ -332,6 +356,42 @@ function render(){
     $('m-match-res').innerHTML = bigPair(S.sets[L], S.sets[R], teamColor(L), teamColor(R));
     $('m-match-pills').innerHTML = S.hist.map(pillHTML).join('');
   }
+}
+
+/* ---------- Saque (balón) ---------- */
+function renderServe(){
+  const zero = !S.score.A && !S.score.B, L = S.left;
+  [['srv-left', L], ['srv-right', other(L)]].forEach(([eid, team]) => {
+    const el = $(eid), serving = S.server === team && !S.over;
+    const next = serving ? 'serve' : (zero && !S.over ? 'serve ghost' : 'serve off');
+    if (el.className !== next) { el.className = next; if (serving) { el.style.animation = 'none'; void el.offsetWidth; el.style.animation = ''; } }
+  });
+}
+
+/* ---------- Pitido sintético (WebAudio, sin ficheros) ---------- */
+function beep(pattern){
+  if (!soundOn) return;
+  try {
+    actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+    if (actx.state === 'suspended') actx.resume();
+    let t = actx.currentTime + 0.02;
+    pattern.forEach(([dur, gap]) => {
+      const o = actx.createOscillator(), g = actx.createGain(), lfo = actx.createOscillator(), lg = actx.createGain();
+      o.type = 'sine'; o.frequency.value = 2900;
+      lfo.frequency.value = 42; lg.gain.value = 140; lfo.connect(lg); lg.connect(o.frequency);   // trino de silbato
+      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.5, t + 0.02);
+      g.gain.setValueAtTime(0.5, t + dur - 0.04); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+      o.connect(g); g.connect(actx.destination);
+      o.start(t); lfo.start(t); o.stop(t + dur); lfo.stop(t + dur);
+      t += dur + gap;
+    });
+  } catch(e){}
+}
+function paintSound(){ $('btn-sound').classList.toggle('on', soundOn); $('sound-st').textContent = soundOn ? 'ON' : 'OFF'; }
+function toggleSound(){
+  soundOn = !soundOn;
+  try { localStorage.setItem(SOUND_KEY, soundOn ? '1' : '0'); } catch(e){}
+  paintSound(); if (soundOn) beep([[.2,0]]);
 }
 
 /* ---------- Pantalla encendida (activar / desactivar) ---------- */
@@ -400,6 +460,12 @@ gestures('b-right', () => other(S.left));
 $('btn-undo').onclick = undo;
 $('btn-swap').onclick = swapSides;
 $('btn-wake').onclick = toggleWake;
+$('btn-sound').onclick = toggleSound;
+[['srv-left', () => S.left], ['srv-right', () => other(S.left)]].forEach(([eid, team]) => {
+  const el = $(eid);
+  ['pointerdown', 'pointerup'].forEach(t => el.addEventListener(t, e => e.stopPropagation()));   // no sumar punto al tocar el balón
+  el.addEventListener('click', e => { e.stopPropagation(); setServer(team()); });
+});
 $('fs-btn').onclick = toggleFS;
 $('btn-reset').onclick = () => $('m-reset').classList.add('show');
 $('r-cancel').onclick  = () => $('m-reset').classList.remove('show');
@@ -412,7 +478,7 @@ $('m-match-undo').onclick = undo;
 $('m-match-close').onclick = () => { S.modal = null; commit(); };
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') requestWake(); });
 
-load(); render(); paintWake(); paintFS();
+load(); render(); paintWake(); paintFS(); paintSound();
 window.addEventListener('load', requestWake);
 
 /* ---------- PWA ---------- */
