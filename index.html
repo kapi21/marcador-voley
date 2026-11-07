@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Marcador Voleibol</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0a0d13">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Marcador">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<style>
+/* ============ 100% OFFLINE · tipografía de marcador = LED de 7 segmentos propio (SVG) ============ */
+:root{
+  --red:#ff2a3d; --red-d:#8f0f1c; --blue:#1fa2ff; --blue-d:#0a4f8f; --amber:#ffb81c;
+  --cond:"Impact","Haettenschweiler","Arial Narrow Bold","Roboto Condensed","Oswald",system-ui,sans-serif;
+  --ui:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}
+html,body{width:100%;height:100%;overflow:hidden;touch-action:manipulation;overscroll-behavior:none}
+body{
+  font-family:var(--ui);color:#fff;display:flex;flex-direction:column;gap:.45rem;
+  padding:.45rem max(.6rem,env(safe-area-inset-right)) .45rem max(.6rem,env(safe-area-inset-left));
+  background-color:#12151c;
+  /* Textura fibra de carbono */
+  background-image:
+    radial-gradient(#000 18%,transparent 19%),radial-gradient(#000 18%,transparent 19%),
+    radial-gradient(rgba(255,255,255,.07) 14%,transparent 20%),radial-gradient(rgba(255,255,255,.07) 14%,transparent 20%);
+  background-size:8px 8px;background-position:0 0,4px 4px,0 1px,4px 5px;
+}
+svg{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none;flex-shrink:0}
+button{font:inherit;color:inherit;border:0;cursor:pointer}
+.tap:active{transform:scale(.97)}
+
+/* ---------- Barra de mandos (chapa metálica) ---------- */
+.bar{
+  display:flex;align-items:center;justify-content:space-between;gap:.5rem;flex-shrink:0;
+  background:linear-gradient(180deg,#2b313d,#161a22 55%,#10131a);
+  border:1px solid #3a4150;border-radius:.7rem;padding:.25rem .5rem;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 2px 6px rgba(0,0,0,.6);
+}
+header.bar{min-height:2.7rem}
+.grp{display:flex;align-items:center;gap:.4rem}
+.setchip{
+  display:flex;align-items:baseline;gap:.35rem;padding:.12rem .7rem;border-radius:.4rem;background:#05070a;border:1px solid #000;
+  box-shadow:inset 0 0 8px rgba(0,0,0,.9),0 0 0 1px #3a4150;font-family:var(--cond);letter-spacing:.08em;color:var(--amber);
+  text-shadow:0 0 8px rgba(255,184,28,.6);font-size:1.15rem;line-height:1.3;text-transform:uppercase
+}
+.setchip small{font-size:.7rem;color:#c9a14a;text-shadow:none;letter-spacing:.12em}
+.mb{
+  display:flex;align-items:center;gap:.4rem;height:2.1rem;padding:0 .65rem;border-radius:.5rem;
+  background:linear-gradient(180deg,#3a4150,#222733);border:1px solid #4a5263;color:#eef2f7;
+  font:700 .78rem var(--ui);letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.15)
+}
+.mb svg{font-size:1.05rem}
+.mb:disabled{opacity:.35}
+.mb.on{border-color:var(--amber);color:var(--amber);box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 0 10px rgba(255,184,28,.35)}
+.mb.on svg{filter:drop-shadow(0 0 4px var(--amber))}
+.mb.fs{background:linear-gradient(180deg,#2b7bff,#1456c9);border-color:#5a98ff}
+.mb .st{font-weight:900}
+
+/* ---------- Paneles de equipo ---------- */
+main{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.panel{
+  min-height:0;display:flex;flex-direction:column;padding:.4rem;border-radius:1rem;
+  /* marco metálico cepillado */
+  background:linear-gradient(135deg,#6b7385 0%,#2a2f3a 25%,#8a93a6 50%,#2a2f3a 75%,#5d6578 100%);
+  box-shadow:0 6px 16px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.5);
+}
+.panel.t-A{--c:var(--red);--cd:var(--red-d);--glow:rgba(255,42,61,.55)}
+.panel.t-B{--c:var(--blue);--cd:var(--blue-d);--glow:rgba(31,162,255,.55)}
+.inner{flex:1;min-height:0;display:flex;flex-direction:column;border-radius:.65rem;overflow:hidden;background:#05070a;border:2px solid #000;box-shadow:0 0 0 2px var(--cd)}
+.plate{
+  display:flex;align-items:center;gap:.5rem;padding:.3rem .5rem;flex-shrink:0;
+  background:
+    repeating-linear-gradient(115deg,rgba(255,255,255,.1) 0 6px,transparent 6px 14px),
+    linear-gradient(180deg,var(--c),var(--cd));
+  border-bottom:2px solid #000;box-shadow:inset 0 -6px 10px rgba(0,0,0,.35)
+}
+.name{
+  flex:1;min-width:0;background:rgba(0,0,0,.18);border:1px dashed transparent;border-radius:.35rem;outline:none;color:#fff;
+  font:400 clamp(1.1rem,6.2vh,2rem)/1.15 var(--cond);letter-spacing:.07em;text-transform:uppercase;padding:0 .35rem;
+  text-shadow:0 2px 0 rgba(0,0,0,.55),0 0 10px rgba(0,0,0,.4);text-overflow:ellipsis
+}
+.name:hover,.name:focus{border-color:rgba(255,255,255,.7);background:rgba(0,0,0,.35)}
+.edit{font-size:.9rem;opacity:.75;color:#fff}
+.setsbox{display:flex;flex-direction:column;align-items:center;flex-shrink:0;padding:.1rem .5rem .15rem;border-radius:.4rem;background:#05070a;border:1px solid #000;box-shadow:0 0 0 1px rgba(255,255,255,.25)}
+.setsbox b{font:700 .6rem var(--ui);letter-spacing:.18em;color:#cbd5e1}
+.setsbox svg.seg{width:auto;height:clamp(1.6rem,7vh,2.6rem);stroke:none;color:var(--amber)}
+.screen{
+  flex:1;min-height:0;position:relative;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:.4rem .6rem .9rem;
+  background:
+    radial-gradient(ellipse at 50% 40%,var(--glow) -40%,transparent 62%),
+    repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 3px),
+    #05070a;
+}
+.screen::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(165deg,rgba(255,255,255,.1) 0%,transparent 38%)}
+.screen .hint{position:absolute;bottom:.3rem;left:0;right:0;text-align:center;font:700 .62rem var(--ui);letter-spacing:.2em;color:rgba(255,255,255,.35);text-transform:uppercase}
+svg.seg{fill:currentColor;stroke:none;overflow:visible}
+.score{width:100%;height:100%;color:var(--c)}
+.seg .off{fill:currentColor;opacity:.09}
+.seg .on{fill:currentColor;filter:drop-shadow(0 0 3px currentColor) drop-shadow(0 0 9px currentColor)}
+.pop{animation:pop .14s ease-out}
+@keyframes pop{50%{transform:scale(1.045)}}
+
+/* ---------- Pie: parciales ---------- */
+footer.bar{min-height:2.1rem}
+.lbl{font:700 .7rem var(--ui);letter-spacing:.16em;color:#aab3c5;text-transform:uppercase}
+.pills{display:flex;gap:.45rem;align-items:center;flex-wrap:wrap}
+.pill{display:flex;align-items:center;gap:.15rem;padding:.05rem .55rem;border-radius:.35rem;background:#05070a;border:1px solid #000;box-shadow:0 0 0 1px #3a4150;font:400 1.05rem/1.3 var(--cond);letter-spacing:.06em}
+.pill .a{color:var(--red);text-shadow:0 0 6px rgba(255,42,61,.7)} .pill .b{color:var(--blue);text-shadow:0 0 6px rgba(31,162,255,.7)} .pill i{color:#7c8699;font-style:normal}
+
+/* ---------- Modales ---------- */
+.ov{position:fixed;inset:0;z-index:40;background:rgba(0,0,0,.82);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;padding:1rem}
+.ov.show{display:flex}
+.box{width:100%;max-width:23rem;text-align:center;padding:1rem;border-radius:1rem;background:linear-gradient(180deg,#232936,#10131a);border:1px solid #4a5263;box-shadow:0 10px 40px #000}
+.box h2{font:400 1.15rem var(--cond);letter-spacing:.14em;color:var(--amber);text-transform:uppercase;margin-bottom:.5rem}
+.box.win h2{color:#4ade80}
+.winner{font:400 clamp(1.6rem,8vh,2.6rem)/1.1 var(--cond);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.4rem}
+.big{display:flex;justify-content:center;margin:.2rem 0 .7rem}
+.big svg.seg{height:clamp(3rem,16vh,5rem);width:auto}
+.vs{align-self:center;font:400 1.4rem var(--cond);color:#7c8699;margin:0 .6rem}
+.row{display:flex;gap:.5rem;margin-top:.6rem}
+.btn{flex:1;height:3rem;border-radius:.7rem;display:flex;align-items:center;justify-content:center;gap:.5rem;background:linear-gradient(180deg,#3a4150,#222733);border:1px solid #4a5263;font:800 .9rem var(--ui);letter-spacing:.06em;text-transform:uppercase;color:#fff}
+.btn svg{font-size:1.2rem}
+.btn.go{background:linear-gradient(180deg,#22c55e,#15803d);border-color:#4ade80}
+.btn.warn{background:linear-gradient(180deg,#f59e0b,#b45309);border-color:#fbbf24}
+.btn.dng{background:linear-gradient(180deg,#f43f5e,#be123c);border-color:#fb7185}
+.btn.sq{flex:0 0 3.2rem}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.sub{font:700 .72rem var(--ui);letter-spacing:.06em;color:#aab3c5;margin-top:.3rem;text-transform:none}
+
+/* ---------- Aviso vertical ---------- */
+#rot{display:none;position:fixed;inset:0;z-index:50;background:#06080c;flex-direction:column;align-items:center;justify-content:center;gap:1rem;text-align:center;padding:1.5rem}
+#rot .ic{font-size:4rem;color:#22d3ee;animation:tilt 1.6s ease-in-out infinite}
+#rot p{font:400 1.4rem var(--cond);letter-spacing:.1em;text-transform:uppercase}
+@keyframes tilt{0%,100%{transform:rotate(0)}50%{transform:rotate(90deg)}}
+@media (orientation:portrait){#rot{display:flex}}
+@media (max-height:400px){.mb{height:1.9rem;padding:0 .5rem;font-size:.7rem}header.bar{min-height:2.4rem}}
+@media (max-width:760px){.mb .tx{display:none}.mb{padding:0 .55rem}}
+body.standalone #fs-btn{display:none}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute"><defs>
+ <symbol id="i-expand" viewBox="0 0 24 24"><path d="M3 9V3h6M21 9V3h-6M3 15v6h6M21 15v6h-6"/></symbol>
+ <symbol id="i-compress" viewBox="0 0 24 24"><path d="M9 3v6H3M15 3v6h6M9 21v-6H3M15 21v-6h6"/></symbol>
+ <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+ <symbol id="i-swap" viewBox="0 0 24 24"><path d="M4 8h16l-4-4M20 16H4l4 4"/></symbol>
+ <symbol id="i-reset" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></symbol>
+ <symbol id="i-undo" viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/></symbol>
+ <symbol id="i-play" viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z" fill="currentColor"/></symbol>
+ <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+ <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></symbol>
+ <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM14 6l4 4"/></symbol>
+ <symbol id="i-rot" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></symbol>
+</defs></svg>
+
+<div id="rot">
+  <svg class="ic"><use href="#i-rot"/></svg>
+  <p>Gira el móvil en horizontal</p>
+</div>
+
+<header class="bar">
+  <div class="grp"><div class="setchip"><small>SET</small><span id="set-ind">1/3</span><small>· A 25</small></div></div>
+  <div class="grp">
+    <button class="mb tap" id="btn-undo"><svg><use href="#i-undo"/></svg><span class="tx">Deshacer</span></button>
+    <button class="mb tap" id="btn-wake"><svg><use href="#i-sun"/></svg><span class="tx">Pantalla</span><span class="st" id="wake-st">ON</span></button>
+    <button class="mb tap" id="btn-swap"><svg><use href="#i-swap"/></svg><span class="tx">Cambiar campo</span></button>
+    <button class="mb tap" id="btn-reset"><svg><use href="#i-reset"/></svg><span class="tx">Reiniciar</span></button>
+    <button class="mb fs tap" id="fs-btn"><svg id="fs-ic"><use href="#i-expand"/></svg><span class="tx" id="fs-tx">Completa</span></button>
+  </div>
+</header>
+
+<main>
+  <section class="panel t-A" id="p-left"><div class="inner">
+    <div class="plate">
+      <input class="name" id="n-left" maxlength="16" autocomplete="off" aria-label="Nombre equipo izquierdo"><svg class="edit"><use href="#i-pen"/></svg>
+      <div class="setsbox"><b>SETS</b><svg class="seg" id="s-left" viewBox="0 0 60 100"></svg></div>
+    </div>
+    <div class="screen tap" id="b-left"><svg class="seg score" id="v-left" viewBox="0 0 130 100" preserveAspectRatio="xMidYMid meet"></svg><span class="hint">Toca para sumar</span></div>
+  </div></section>
+  <section class="panel t-B" id="p-right"><div class="inner">
+    <div class="plate">
+      <input class="name" id="n-right" maxlength="16" autocomplete="off" aria-label="Nombre equipo derecho"><svg class="edit"><use href="#i-pen"/></svg>
+      <div class="setsbox"><b>SETS</b><svg class="seg" id="s-right" viewBox="0 0 60 100"></svg></div>
+    </div>
+    <div class="screen tap" id="b-right"><svg class="seg score" id="v-right" viewBox="0 0 130 100" preserveAspectRatio="xMidYMid meet"></svg><span class="hint">Toca para sumar</span></div>
+  </div></section>
+</main>
+
+<footer class="bar">
+  <div class="grp"><span class="lbl">Parciales</span><div class="pills" id="pills"></div></div>
+  <span class="lbl" id="foot-r"></span>
+</footer>
+
+<!-- Fin de set -->
+<div class="ov" id="m-set"><div class="box">
+  <h2>Set terminado</h2>
+  <div class="big" id="m-set-res"></div>
+  <div class="row">
+    <button class="btn go tap" id="m-next"><svg><use href="#i-play"/></svg>Siguiente set</button>
+    <button class="btn sq tap" id="m-set-undo" aria-label="Deshacer"><svg><use href="#i-undo"/></svg></button>
+  </div>
+  <p class="sub">Al seguir, los equipos cambian de campo.</p>
+</div></div>
+
+<!-- Fin de partido -->
+<div class="ov" id="m-match"><div class="box win">
+  <h2>Partido finalizado</h2>
+  <p class="winner" id="m-winner"></p>
+  <div class="big" id="m-match-res"></div>
+  <div class="pills" id="m-match-pills" style="justify-content:center"></div>
+  <div class="row">
+    <button class="btn go tap" id="m-new"><svg><use href="#i-reset"/></svg>Nuevo partido</button>
+    <button class="btn sq tap" id="m-match-undo" aria-label="Deshacer"><svg><use href="#i-undo"/></svg></button>
+    <button class="btn sq tap" id="m-match-close" aria-label="Cerrar"><svg><use href="#i-x"/></svg></button>
+  </div>
+</div></div>
+
+<!-- Reinicio -->
+<div class="ov" id="m-reset"><div class="box">
+  <h2>Reiniciar</h2>
+  <div class="grid2">
+    <button class="btn warn tap" id="r-set"><svg><use href="#i-reset"/></svg>Este set</button>
+    <button class="btn dng tap" id="r-all"><svg><use href="#i-trash"/></svg>Todo</button>
+  </div>
+  <div class="row"><button class="btn tap" id="r-cancel"><svg><use href="#i-x"/></svg>Cancelar</button></div>
+</div></div>
+
+<script>
+const $ = id => document.getElementById(id);
+const KEY = 'marcador_voley_v3', WAKE_KEY = 'marcador_voley_wake';
+const TARGET = 25, MIN_DIFF = 2, TOTAL_SETS = 3;       // Alevín: 3 sets obligatorios a 25
+const DEFAULT_NAMES = { A: 'Zurbarán', B: 'La Albuera' };
+const other = id => id === 'A' ? 'B' : 'A';
+
+/* ---------- Tipografía propia: LED de 7 segmentos ---------- */
+const hz = (x1,x2,cy,h=4.6) => `${x1},${cy} ${x1+h},${cy-h} ${x2-h},${cy-h} ${x2},${cy} ${x2-h},${cy+h} ${x1+h},${cy+h}`;
+const vt = (cx,y1,y2,h=4.6) => `${cx},${y1} ${cx+h},${y1+h} ${cx+h},${y2-h} ${cx},${y2} ${cx-h},${y2-h} ${cx-h},${y1+h}`;
+const SEG = { a:hz(9,51,6), b:vt(54,9,47), c:vt(54,53,91), d:hz(9,51,94), e:vt(6,53,91), f:vt(6,9,47), g:hz(11,49,50) };
+const MAP = ['abcdef','bc','abdeg','abcdg','bcfg','acdfg','acdefg','abc','abcdefg','abcdfg'];
+function digit(d, x=0){            // d = 0-9, o null = apagado
+  const lit = d == null ? '' : MAP[d];
+  return `<g transform="translate(${x},0)">` + Object.keys(SEG).map(k =>
+    `<polygon class="${lit.includes(k)?'on':'off'}" points="${SEG[k]}"/>`).join('') + '</g>';
+}
+const scoreSVG = n => {            // dos dígitos, cursiva suave, cero a la izquierda apagado
+  n = Math.min(n, 99);
+  const t = n >= 10 ? Math.floor(n/10) : null;
+  return `<g transform="skewX(-5) translate(8,0)">${digit(t,0)}${digit(n%10,68)}</g>`;
+};
+
+/* ---------- Estado ---------- */
+const fresh = () => ({ score:{A:0,B:0}, sets:{A:0,B:0}, left:'A', set:1, hist:[], over:false, modal:null });
+let S = fresh(), names = { ...DEFAULT_NAMES }, undoStack = [];
+let wakeLock = null, wakePref = true;
+
+function save(){ try { localStorage.setItem(KEY, JSON.stringify({ S, names, undoStack })); } catch(e){} }
+function load(){
+  try {
+    const d = JSON.parse(localStorage.getItem(KEY));
+    if (d && d.S && d.names) { S = d.S; names = d.names; undoStack = d.undoStack || []; }
+    const w = localStorage.getItem(WAKE_KEY); if (w !== null) wakePref = w === '1';
+  } catch(e){}
+}
+const snap = () => { undoStack.push(JSON.stringify(S)); if (undoStack.length > 300) undoStack.shift(); };
+function undo(){ if (!undoStack.length) return; S = JSON.parse(undoStack.pop()); commit(); }
+function commit(){ render(); save(); }
+const vibrate = p => { try { navigator.vibrate && navigator.vibrate(p); } catch(e){} };
+
+/* ---------- Reglas ---------- */
+function addPoint(id){
+  if (S.over || S.modal) return;
+  snap(); S.score[id]++; vibrate(25);
+  const o = other(id);
+  if (S.score[id] >= TARGET && S.score[id] - S.score[o] >= MIN_DIFF) {
+    S.sets[id]++; S.hist.push({ A:S.score.A, B:S.score.B, w:id }); vibrate([40,50,40]);
+    if (S.set >= TOTAL_SETS) { S.over = true; S.modal = 'match'; } else S.modal = 'set';
+  }
+  commit();
+  const el = $(S.left === id ? 'v-left' : 'v-right');
+  el.classList.remove('pop'); void el.offsetWidth; el.classList.add('pop');
+}
+function nextSet(){ snap(); S.set++; S.score = {A:0,B:0}; S.left = other(S.left); S.modal = null; commit(); }
+function swapSides(){ snap(); S.left = other(S.left); commit(); }
+function resetSet(){ snap(); S.score = {A:0,B:0}; S.modal = null; commit(); }
+function resetAll(){ S = fresh(); undoStack = []; commit(); }
+
+/* ---------- Render ---------- */
+const cls = id => id === 'A' ? 'a' : 'b';
+const pillHTML = h => { const l = S.left, r = other(l);   // orden visual izquierda-derecha
+  return `<span class="pill"><span class="${cls(l)}">${h[l]}</span><i>-</i><span class="${cls(r)}">${h[r]}</span></span>`; };
+const bigPair = (a, b, ca, cb) =>
+  `<svg class="seg" viewBox="0 0 130 100" style="color:${ca}">${scoreSVG(a)}</svg><span class="vs">-</span><svg class="seg" viewBox="0 0 130 100" style="color:${cb}">${scoreSVG(b)}</svg>`;
+const teamColor = id => id === 'A' ? 'var(--red)' : 'var(--blue)';
+
+function render(){
+  const L = S.left, R = other(L);
+  $('p-left').className = 'panel t-' + L; $('p-right').className = 'panel t-' + R;
+  if (document.activeElement !== $('n-left'))  $('n-left').value  = names[L];
+  if (document.activeElement !== $('n-right')) $('n-right').value = names[R];
+  $('v-left').innerHTML  = scoreSVG(S.score[L]);
+  $('v-right').innerHTML = scoreSVG(S.score[R]);
+  $('s-left').innerHTML  = digit(S.sets[L]);
+  $('s-right').innerHTML = digit(S.sets[R]);
+  $('set-ind').textContent = `${S.set}/${TOTAL_SETS}`;
+  $('btn-undo').disabled = !undoStack.length;
+  $('pills').innerHTML = S.hist.length ? S.hist.map(pillHTML).join('') : '<span class="lbl" style="opacity:.5">—</span>';
+
+  $('m-set').classList.toggle('show', S.modal === 'set');
+  $('m-match').classList.toggle('show', S.modal === 'match');
+  const last = S.hist[S.hist.length-1];
+  if (last && S.modal === 'set')
+    $('m-set-res').innerHTML = bigPair(last[L], last[R], teamColor(L), teamColor(R));
+  if (S.modal === 'match') {
+    $('m-winner').textContent = names[S.sets.A > S.sets.B ? 'A' : 'B'];
+    $('m-match-res').innerHTML = bigPair(S.sets[L], S.sets[R], teamColor(L), teamColor(R));
+    $('m-match-pills').innerHTML = S.hist.map(pillHTML).join('');
+  }
+}
+
+/* ---------- Pantalla encendida (activar / desactivar) ---------- */
+function paintWake(){
+  const on = !!wakeLock;
+  $('btn-wake').classList.toggle('on', on);
+  $('wake-st').textContent = wakePref ? (on ? 'ON' : 'ON…') : 'OFF';
+}
+async function requestWake(){
+  if (!wakePref || wakeLock || !('wakeLock' in navigator)) return paintWake();
+  try {
+    wakeLock = await navigator.wakeLock.request('screen');
+    wakeLock.addEventListener('release', () => { wakeLock = null; paintWake(); });
+  } catch(e){ wakeLock = null; }
+  paintWake();
+}
+async function toggleWake(){
+  wakePref = !wakePref;
+  try { localStorage.setItem(WAKE_KEY, wakePref ? '1' : '0'); } catch(e){}
+  if (wakePref) await requestWake();
+  else { if (wakeLock) { try { await wakeLock.release(); } catch(e){} } wakeLock = null; paintWake(); }
+}
+
+/* ---------- Pantalla completa ---------- */
+const isFS = () => document.fullscreenElement || document.webkitFullscreenElement;
+function toggleFS(){
+  const d = document, el = d.documentElement;
+  if (!isFS()) {
+    const f = el.requestFullscreen || el.webkitRequestFullscreen;
+    if (f) { const p = f.call(el); p && p.catch && p.catch(()=>{}); }
+    try { screen.orientation.lock('landscape').catch(()=>{}); } catch(e){}
+  } else { (d.exitFullscreen || d.webkitExitFullscreen).call(d); }
+}
+function paintFS(){
+  $('fs-ic').innerHTML = `<use href="#${isFS() ? 'i-compress' : 'i-expand'}"/>`;
+  $('fs-tx').textContent = isFS() ? 'Salir' : 'Completa';
+}
+document.addEventListener('fullscreenchange', paintFS);
+document.addEventListener('webkitfullscreenchange', paintFS);
+if (!(document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen)) $('fs-btn').style.display = 'none';
+if (matchMedia('(display-mode: fullscreen), (display-mode: standalone)').matches) document.body.classList.add('standalone');
+
+/* ---------- Eventos ---------- */
+$('b-left').addEventListener('click',  () => { addPoint(S.left);        requestWake(); });
+$('b-right').addEventListener('click', () => { addPoint(other(S.left)); requestWake(); });
+[['n-left', () => S.left], ['n-right', () => other(S.left)]].forEach(([eid, team]) => {
+  const el = $(eid);
+  el.addEventListener('click', e => e.stopPropagation());
+  el.addEventListener('input', () => { names[team()] = el.value.trim() || DEFAULT_NAMES[team()]; save(); });
+  el.addEventListener('blur',  () => { el.value = names[team()]; });
+  el.addEventListener('keydown', e => { if (e.key === 'Enter') el.blur(); });
+});
+$('btn-undo').onclick = undo;
+$('btn-swap').onclick = swapSides;
+$('btn-wake').onclick = toggleWake;
+$('fs-btn').onclick = toggleFS;
+$('btn-reset').onclick = () => $('m-reset').classList.add('show');
+$('r-cancel').onclick  = () => $('m-reset').classList.remove('show');
+$('r-set').onclick = () => { $('m-reset').classList.remove('show'); resetSet(); };
+$('r-all').onclick = () => { $('m-reset').classList.remove('show'); resetAll(); };
+$('m-next').onclick = nextSet;
+$('m-set-undo').onclick = undo;
+$('m-new').onclick = resetAll;
+$('m-match-undo').onclick = undo;
+$('m-match-close').onclick = () => { S.modal = null; commit(); };
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') requestWake(); });
+
+load(); render(); paintWake(); paintFS();
+window.addEventListener('load', requestWake);
+
+/* ---------- PWA ---------- */
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+  navigator.serviceWorker.register('sw.js').catch(()=>{});
+}
+</script>
+</body>
+</html>
