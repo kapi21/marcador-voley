@@ -51,3 +51,4 @@ mio = [r for r in rows if re.search(r"ALBUERA|ZURBARAN|SALESIANOS", " ".join([r[
 md += "## Filtro: La Albuera / Salesianos / IES Zurbarán\n\n" + tabla(mio)
 open(f"{OUT}/calendario_3F_GB.md", "w", encoding="utf-8").write(md)
 print(len(rows), "partidos guardados en", OUT)
+
