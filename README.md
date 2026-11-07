@@ -1,6 +1,6 @@
 # 🏐 Marcador Voleibol Alevín (PWA)
 
-Marcador táctil deportivo para partidos de voleibol categoría **Alevín** (Salesianos vs La Albuera, editable), pensado para usarse en el móvil en horizontal y **100 % sin conexión**.
+Marcador táctil deportivo para partidos de voleibol categoría **Alevín**, pensado para usarse en el móvil en horizontal y **100 % sin conexión**.
 
 👉 **Abrir marcador:** https://kapi21.github.io/marcador-voley/  
 📅 **Calendario 3ª Femenino GB (FEDEXVB):** [`calendario/calendario_3F_GB.md`](calendario/calendario_3F_GB.md)
