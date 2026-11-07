@@ -92,7 +92,7 @@ main{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
 .setsbox b{font:700 .6rem var(--ui);letter-spacing:.18em;color:#cbd5e1}
 .setsbox svg.seg{width:auto;height:clamp(1.6rem,7vh,2.6rem);stroke:none;color:var(--amber)}
 .screen{
-  flex:1;min-height:0;position:relative;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:.4rem .6rem .9rem;
+  flex:1;min-height:0;position:relative;cursor:pointer;touch-action:none;display:flex;align-items:center;justify-content:center;padding:.4rem .6rem .9rem;
   background:
     radial-gradient(ellipse at 50% 40%,var(--glow) -40%,transparent 62%),
     repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 3px),
@@ -183,14 +183,14 @@ body.standalone #fs-btn{display:none}
       <input class="name" id="n-left" maxlength="16" autocomplete="off" aria-label="Nombre equipo izquierdo"><svg class="edit"><use href="#i-pen"/></svg>
       <div class="setsbox"><b>SETS</b><svg class="seg" id="s-left" viewBox="0 0 60 100"></svg></div>
     </div>
-    <div class="screen tap" id="b-left"><svg class="seg score" id="v-left" viewBox="0 0 130 100" preserveAspectRatio="xMidYMid meet"></svg><span class="hint">Toca para sumar</span></div>
+    <div class="screen tap" id="b-left"><svg class="seg score" id="v-left" viewBox="0 0 130 100" preserveAspectRatio="xMidYMid meet"></svg><span class="hint">Toca o desliza ↓ suma · ↑ resta</span></div>
   </div></section>
   <section class="panel t-B" id="p-right"><div class="inner">
     <div class="plate">
       <input class="name" id="n-right" maxlength="16" autocomplete="off" aria-label="Nombre equipo derecho"><svg class="edit"><use href="#i-pen"/></svg>
       <div class="setsbox"><b>SETS</b><svg class="seg" id="s-right" viewBox="0 0 60 100"></svg></div>
     </div>
-    <div class="screen tap" id="b-right"><svg class="seg score" id="v-right" viewBox="0 0 130 100" preserveAspectRatio="xMidYMid meet"></svg><span class="hint">Toca para sumar</span></div>
+    <div class="screen tap" id="b-right"><svg class="seg score" id="v-right" viewBox="0 0 130 100" preserveAspectRatio="xMidYMid meet"></svg><span class="hint">Toca o desliza ↓ suma · ↑ resta</span></div>
   </div></section>
 </main>
 
@@ -237,7 +237,7 @@ body.standalone #fs-btn{display:none}
 const $ = id => document.getElementById(id);
 const KEY = 'marcador_voley_v3', WAKE_KEY = 'marcador_voley_wake';
 const TARGET = 25, MIN_DIFF = 2, TOTAL_SETS = 3;       // Alevín: 3 sets obligatorios a 25
-const DEFAULT_NAMES = { A: 'Zurbarán', B: 'La Albuera' };
+const DEFAULT_NAMES = { A: 'Salesianos', B: 'La Albuera' };
 const other = id => id === 'A' ? 'B' : 'A';
 
 /* ---------- Tipografía propia: LED de 7 segmentos ---------- */
@@ -265,7 +265,10 @@ function save(){ try { localStorage.setItem(KEY, JSON.stringify({ S, names, undo
 function load(){
   try {
     const d = JSON.parse(localStorage.getItem(KEY));
-    if (d && d.S && d.names) { S = d.S; names = d.names; undoStack = d.undoStack || []; }
+    if (d && d.S && d.names) {
+      S = d.S; names = d.names; undoStack = d.undoStack || [];
+      if (names.A === 'Zurbarán') names.A = DEFAULT_NAMES.A;   // migración: Zurbarán → Salesianos
+    }
     const w = localStorage.getItem(WAKE_KEY); if (w !== null) wakePref = w === '1';
   } catch(e){}
 }
@@ -284,6 +287,12 @@ function addPoint(id){
     if (S.set >= TOTAL_SETS) { S.over = true; S.modal = 'match'; } else S.modal = 'set';
   }
   commit();
+  const el = $(S.left === id ? 'v-left' : 'v-right');
+  el.classList.remove('pop'); void el.offsetWidth; el.classList.add('pop');
+}
+function subPoint(id){
+  if (S.over || S.modal || S.score[id] <= 0) return;
+  snap(); S.score[id]--; vibrate(20); commit();
   const el = $(S.left === id ? 'v-left' : 'v-right');
   el.classList.remove('pop'); void el.offsetWidth; el.classList.add('pop');
 }
@@ -366,8 +375,21 @@ if (!(document.documentElement.requestFullscreen || document.documentElement.web
 if (matchMedia('(display-mode: fullscreen), (display-mode: standalone)').matches) document.body.classList.add('standalone');
 
 /* ---------- Eventos ---------- */
-$('b-left').addEventListener('click',  () => { addPoint(S.left);        requestWake(); });
-$('b-right').addEventListener('click', () => { addPoint(other(S.left)); requestWake(); });
+/* Gestos por marcador: toque o desliz ↓ = +1 · desliz ↑ = −1 (cada lado por separado) */
+function gestures(elId, team){
+  const el = $(elId); let sx = 0, sy = 0, active = false;
+  el.addEventListener('pointerdown', e => { active = true; sx = e.clientX; sy = e.clientY; try { el.setPointerCapture(e.pointerId); } catch(_){} });
+  el.addEventListener('pointercancel', () => { active = false; });
+  el.addEventListener('pointerup', e => {
+    if (!active) return; active = false;
+    const dx = e.clientX - sx, dy = e.clientY - sy, TH = 35;
+    if (Math.abs(dy) >= TH && Math.abs(dy) > Math.abs(dx)) { dy > 0 ? addPoint(team()) : subPoint(team()); }
+    else if (Math.abs(dx) < 15 && Math.abs(dy) < 15) addPoint(team());   // toque simple
+    requestWake();
+  });
+}
+gestures('b-left',  () => S.left);
+gestures('b-right', () => other(S.left));
 [['n-left', () => S.left], ['n-right', () => other(S.left)]].forEach(([eid, team]) => {
   const el = $(eid);
   el.addEventListener('click', e => e.stopPropagation());

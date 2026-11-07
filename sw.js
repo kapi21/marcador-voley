@@ -1,5 +1,5 @@
 // Service worker: cache-first, funciona sin conexión. Sube VERSION al cambiar archivos.
-const VERSION = 'marcador-v3';
+const VERSION = 'marcador-v4';
 const FILES = ['./', './index.html', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png', './icons/icon-maskable-512.png'];
 
 self.addEventListener('install', e => {

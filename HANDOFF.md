@@ -23,3 +23,8 @@ Indicador de saque, pitido sintético, compartir resultado.
 ## Calendario 3ª Femenino GB
 - Fuente: https://fedexvoleibol.com/calendario-tercera-femenino-gb (iframe: https://resultados.fedexvoleibol.com/calendar.php?grupo=147)
 - Guardado en `calendario/` (CSV, MD y raw.html). Actualizar: `python calendario_gb.py`.
+
+## Cambios 07/11 (tarde)
+- Equipo A renombrado: Zurbarán → **Salesianos** (migración automática del nombre guardado).
+- Gestos por marcador: toque o deslizar ↓ = +1, deslizar ↑ = −1 (cada lado independiente; el deshacer global sigue disponible).
+- Logo nuevo (marcador LED rojo/azul + balón) generado con `make_icons.py`. SW `marcador-v4`.
