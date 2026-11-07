@@ -19,3 +19,7 @@ En Android/Chrome: menú ⋮ → "Instalar aplicación". Instalada abre en panta
 
 ## Pendiente (opcional)
 Indicador de saque, pitido sintético, compartir resultado.
+
+## Calendario 3ª Femenino GB
+- Fuente: https://fedexvoleibol.com/calendario-tercera-femenino-gb (iframe: https://resultados.fedexvoleibol.com/calendar.php?grupo=147)
+- Guardado en `calendario/` (CSV, MD y raw.html). Actualizar: `python calendario_gb.py`.
