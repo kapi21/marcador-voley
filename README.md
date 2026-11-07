@@ -44,3 +44,4 @@ Marcador táctil deportivo para partidos de voleibol categoría **Alevín**, pen
 | [`calendario/`](calendario/) | Calendario y resultados de 3ª Femenino GB (`.md`, `.csv` y `raw.html`). |
 | [`calendario_gb.py`](calendario_gb.py) | Script para actualizar el calendario desde FEDEXVB (`python calendario_gb.py`). |
 | [`HANDOFF.md`](HANDOFF.md) | Notas técnicas y registro de cambios del proyecto. |
+

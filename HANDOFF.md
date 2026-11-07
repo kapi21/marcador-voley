@@ -5,7 +5,7 @@
 - `manifest.webmanifest`: display fullscreen, landscape, iconos PNG.
 - `sw.js`: cache-first (subir `VERSION` al cambiar archivos).
 - `make_icons.py` → genera `icons/` (192, 512, maskable).
-- `Marcador Táctil de Voleibol.pdf`: requisitos originales (chat Gemini).
+- `README.md`: documentación principal del repositorio.
 
 ## Reglas implementadas
 3 sets obligatorios a 25 con diferencia de 2, cambio de campo automático al siguiente set, rally point.
