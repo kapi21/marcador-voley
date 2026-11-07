@@ -1,5 +1,5 @@
 // Service worker: cache-first para la app, network-first para el calendario JSON.
-const VERSION = 'marcador-v7';
+const VERSION = 'marcador-v8';
 const FILES = ['./', './index.html', './manifest.webmanifest', './calendario/salesianos_alevin.json', './icons/icon-192.png', './icons/icon-512.png', './icons/icon-maskable-512.png'];
 
 self.addEventListener('install', e => {
