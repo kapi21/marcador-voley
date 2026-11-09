@@ -3,7 +3,7 @@
   "categoria": "ALEVIN",
   "fuente": "https://fedexvoleibol.com/calendario-tercera-femenino-gb",
   "iframe": "https://resultados.fedexvoleibol.com/calendar.php?grupo=147",
-  "actualizado": "2026-11-09T04:37:45Z",
+  "actualizado": "2026-11-09T15:09:12Z",
   "partidos": [
     {
       "jornada": 1,
@@ -33,19 +33,19 @@
       "jornada": 3,
       "fecha": "2026-11-07",
       "dia": "Sabado",
-      "hora": "10:00",
+      "hora": "",
       "local": "E.D. SALESIANOS A",
-      "resultado": "vs",
+      "resultado": "2 - 0",
       "visitante": "CD LA ALBUERA VOLEY A",
-      "sets": "",
+      "sets": "25-17/25-20/0-0",
       "pabellon": "IES ZURBARAN",
-      "pendiente": true
+      "pendiente": false
     },
     {
       "jornada": 4,
-      "fecha": "2026-11-15",
-      "dia": "Viernes",
-      "hora": "16:30",
+      "fecha": "2026-11-14",
+      "dia": "Sabado",
+      "hora": "09:30",
       "local": "E.D. SALESIANOS A",
       "resultado": "vs",
       "visitante": "VOLEIBOL A7 AZUL B",
