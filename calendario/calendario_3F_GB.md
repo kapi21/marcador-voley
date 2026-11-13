@@ -64,9 +64,9 @@ Datos: https://resultados.fedexvoleibol.com/calendar.php?grupo=147
 | 4 | 2026-11-13 | Viernes | 17:30 | INFANTIL | CD LA ALBUERA VOLEY A | vs | CLUB PACENSE VOLEIBOL B |  | P. Municipal |
 | 4 | 2026-11-13 | Viernes |  | ALEVIN | CD LA ALBUERA VOLEY A | vs | CLUB PACENSE VOLEIBOL ALEVIN B |  | CANCELADO P. Municipal |
 | 4 | 2026-11-13 | Viernes | 17:00 | ALEVIN | ESCUELA DEPORTIVA GUADALUPE A | vs | G.M.D. OLIVENZA A |  | Pabellón EVG Badajoz |
-| 4 | 2026-11-13 | Viernes | 17:00 | CADETE | ESCUELA DEPORTIVA GUADALUPE A | vs | G.M.D. OLIVENZA A |  | Pabellón EVG Badajoz |
-| 4 | 2026-11-13 | Viernes | 18:30 | INFANTIL | ESCUELA DEPORTIVA GUADALUPE A | vs | G.M.D. OLIVENZA A |  | Pabellón EVG Badajoz |
-| 4 | 2026-11-13 | Viernes | 18:30 | JUVENIL | ESCUELA DEPORTIVA GUADALUPE A | vs | G.M.D. OLIVENZA A |  | Pabellón EVG Badajoz |
+| 4 | 2026-11-13 | Viernes |  | CADETE | ESCUELA DEPORTIVA GUADALUPE A | 3 - 2 | G.M.D. OLIVENZA A | 25-22/25-22/17-25/23-25/15-8 | Pabellón EVG Badajoz |
+| 4 | 2026-11-13 | Viernes |  | JUVENIL | ESCUELA DEPORTIVA GUADALUPE A | 3 - 1 | G.M.D. OLIVENZA A | 25-16/25-20/23-25/25-14 | Pabellón EVG Badajoz |
+| 4 | 2026-11-13 | Viernes |  | INFANTIL | ESCUELA DEPORTIVA GUADALUPE A | 3 - 2 | G.M.D. OLIVENZA A | 25-18/19-25/25-19/15-25/15-10 | Pabellón EVG Badajoz |
 | 4 | 2026-11-14 | Sabado | 09:30 | ALEVIN | E.D. SALESIANOS A | vs | VOLEIBOL A7 AZUL B |  | IES ZURBARAN |
 | 4 | 2026-11-14 | Sabado | 10:30 | INFANTIL | E.D. SALESIANOS A | vs | VOLEIBOL A7 AZUL B |  | IES ZURBARAN |
 | 4 | 2026-11-14 | Sabado | 12:00 | CADETE | E.D. SALESIANOS A | vs | VOLEIBOL A7 AZUL B |  | IES ZURBARAN |
@@ -80,8 +80,8 @@ Datos: https://resultados.fedexvoleibol.com/calendar.php?grupo=147
 | 5 | 2026-11-20 | Viernes | 18:30 | INFANTIL | G.M.D. OLIVENZA A | vs | CD LA ALBUERA VOLEY A |  | P. Municipal |
 | 5 | 2026-11-22 | Domingo | Pdte-local | ALEVIN | CLUB PACENSE VOLEIBOL ALEVIN B | vs | E.D. SALESIANOS A |  | P. Municipal |
 | 5 | 2026-11-22 | Domingo | Pdte-local | CADETE | CLUB PACENSE VOLEIBOL B | vs | E.D. SALESIANOS A |  | P. Municipal |
-| 5 | 2026-11-22 | Domingo | Pdte-local | INFANTIL | CLUB PACENSE VOLEIBOL B | vs | E.D. SALESIANOS A |  | P. Municipal |
 | 5 | 2026-11-22 | Domingo | Pdte-local | JUVENIL | CLUB PACENSE VOLEIBOL B | vs | E.D. SALESIANOS A |  | P. Municipal |
+| 5 | 2026-11-22 | Domingo | Pdte-local | INFANTIL | CLUB PACENSE VOLEIBOL B | vs | E.D. SALESIANOS A |  | P. Municipal |
 | 5 | 2026-11-22 | Domingo | 10:00 | CADETE | G.M.D. OLIVENZA A | vs | CD LA ALBUERA VOLEY A |  | P. Municipal |
 | 5 | 2026-11-22 | Domingo | 12:00 | JUVENIL | G.M.D. OLIVENZA A | vs | CD LA ALBUERA VOLEY A |  | P. Municipal |
 | 5 | 2026-11-22 | Domingo | 10:00 | JUVENIL | VOLEIBOL A7 AZUL B | vs | ESCUELA DEPORTIVA GUADALUPE A |  | P. juancho Perez |
@@ -99,8 +99,8 @@ Datos: https://resultados.fedexvoleibol.com/calendar.php?grupo=147
 | 6 | 2026-12-11 | Viernes | 18:30 | INFANTIL | ESCUELA DEPORTIVA GUADALUPE A | vs | E.D. SALESIANOS A |  | Pabellón EVG Badajoz |
 | 6 | 2026-12-13 | Domingo | Pdte-local | JUVENIL | G.M.D. OLIVENZA A | vs | CLUB PACENSE VOLEIBOL B |  | P. Municipal |
 | 6 | 2026-12-13 | Domingo | Pdte-local | CADETE | G.M.D. OLIVENZA A | vs | CLUB PACENSE VOLEIBOL B |  | P. Municipal |
-| 6 | 2026-12-13 | Domingo | Pdte-local | INFANTIL | G.M.D. OLIVENZA A | vs | CLUB PACENSE VOLEIBOL B |  | P. Municipal |
 | 6 | 2026-12-13 | Domingo | Pdte-local | ALEVIN | G.M.D. OLIVENZA A | vs | CLUB PACENSE VOLEIBOL ALEVIN B |  | P. Municipal |
+| 6 | 2026-12-13 | Domingo | Pdte-local | INFANTIL | G.M.D. OLIVENZA A | vs | CLUB PACENSE VOLEIBOL B |  | P. Municipal |
 | 6 | 2026-12-13 | Domingo | Pdte-local | CADETE | VOLEIBOL A7 AZUL B | vs | CD LA ALBUERA VOLEY A |  | P. Municipal |
 | 6 | 2026-12-13 | Domingo | Pdte-local | INFANTIL | VOLEIBOL A7 AZUL B | vs | CD LA ALBUERA VOLEY A |  | P. Municipal |
 | 6 | 2026-12-13 | Domingo | Pdte-local | ALEVIN | VOLEIBOL A7 AZUL B | vs | CD LA ALBUERA VOLEY A |  | P. Municipal |
@@ -118,8 +118,8 @@ Datos: https://resultados.fedexvoleibol.com/calendar.php?grupo=147
 | 7 | 2026-12-20 | Domingo | Pdte-local | JUVENIL | CLUB PACENSE VOLEIBOL B | vs | VOLEIBOL A7 AZUL B |  | P. Municipal |
 | 7 | 2026-12-20 | Domingo | Pdte-local | INFANTIL | CLUB PACENSE VOLEIBOL B | vs | VOLEIBOL A7 AZUL B |  | P. Municipal |
 | 7 | 2026-12-20 | Domingo | Pdte-local | CADETE | CLUB PACENSE VOLEIBOL B | vs | VOLEIBOL A7 AZUL B |  | P. Municipal |
-| 7 | 2026-12-20 | Domingo | Pdte-local | ALEVIN | E.D. SALESIANOS A | vs | G.M.D. OLIVENZA A |  | P. Municipal |
 | 7 | 2026-12-20 | Domingo | Pdte-local | JUVENIL | E.D. SALESIANOS A | vs | G.M.D. OLIVENZA A |  | P. Municipal |
+| 7 | 2026-12-20 | Domingo | Pdte-local | ALEVIN | E.D. SALESIANOS A | vs | G.M.D. OLIVENZA A |  | P. Municipal |
 | 7 | 2026-12-20 | Domingo | Pdte-local | INFANTIL | E.D. SALESIANOS A | vs | G.M.D. OLIVENZA A |  | P. Municipal |
 | 7 | 2026-12-20 | Domingo | Pdte-local | CADETE | E.D. SALESIANOS A | vs | G.M.D. OLIVENZA A |  | P. Municipal |
 
@@ -136,9 +136,9 @@ Datos: https://resultados.fedexvoleibol.com/calendar.php?grupo=147
 | 8 | 2027-01-16 | Sabado | 11:00 | ALEVIN | CD LA ALBUERA VOLEY A | vs | E.D. SALESIANOS A |  | P. Municipal |
 | 8 | 2027-01-16 | Sabado | 11:30 | CADETE | CD LA ALBUERA VOLEY A | vs | E.D. SALESIANOS A |  | P. Municipal |
 | 8 | 2027-01-17 | Domingo | Pdte-local | CADETE | VOLEIBOL A7 AZUL B | vs | G.M.D. OLIVENZA A |  | P. Municipal |
-| 8 | 2027-01-17 | Domingo | Pdte-local | JUVENIL | VOLEIBOL A7 AZUL B | vs | G.M.D. OLIVENZA A |  | P. Municipal |
-| 8 | 2027-01-17 | Domingo | Pdte-local | ALEVIN | VOLEIBOL A7 AZUL B | vs | G.M.D. OLIVENZA A |  | P. Municipal |
 | 8 | 2027-01-17 | Domingo | Pdte-local | INFANTIL | VOLEIBOL A7 AZUL B | vs | G.M.D. OLIVENZA A |  | P. Municipal |
+| 8 | 2027-01-17 | Domingo | Pdte-local | ALEVIN | VOLEIBOL A7 AZUL B | vs | G.M.D. OLIVENZA A |  | P. Municipal |
+| 8 | 2027-01-17 | Domingo | Pdte-local | JUVENIL | VOLEIBOL A7 AZUL B | vs | G.M.D. OLIVENZA A |  | P. Municipal |
 
 ## Jornada 9
 
@@ -163,8 +163,8 @@ Datos: https://resultados.fedexvoleibol.com/calendar.php?grupo=147
 |---|---|---|---|---|---|---|---|---|---|
 | 10 | 2027-02-19 | Viernes | 17:00 | CADETE | ESCUELA DEPORTIVA GUADALUPE A | vs | VOLEIBOL A7 AZUL B |  | Pabellón EVG Badajoz |
 | 10 | 2027-02-19 | Viernes | 17:00 | ALEVIN | ESCUELA DEPORTIVA GUADALUPE A | vs | VOLEIBOL A7 AZUL B |  | Pabellón EVG Badajoz |
-| 10 | 2027-02-19 | Viernes | 18:30 | INFANTIL | ESCUELA DEPORTIVA GUADALUPE A | vs | VOLEIBOL A7 AZUL B |  | Pabellón EVG Badajoz |
 | 10 | 2027-02-19 | Viernes | 18:30 | JUVENIL | ESCUELA DEPORTIVA GUADALUPE A | vs | VOLEIBOL A7 AZUL B |  | Pabellón EVG Badajoz |
+| 10 | 2027-02-19 | Viernes | 18:30 | INFANTIL | ESCUELA DEPORTIVA GUADALUPE A | vs | VOLEIBOL A7 AZUL B |  | Pabellón EVG Badajoz |
 | 10 | 2027-02-20 | Sabado | 09:30 | INFANTIL | CD LA ALBUERA VOLEY A | vs | G.M.D. OLIVENZA A |  | P. Municipal |
 | 10 | 2027-02-20 | Sabado | 09:30 | JUVENIL | CD LA ALBUERA VOLEY A | vs | G.M.D. OLIVENZA A |  | P. Municipal |
 | 10 | 2027-02-20 | Sabado | 11:00 | ALEVIN | CD LA ALBUERA VOLEY A | vs | G.M.D. OLIVENZA A |  | P. Municipal |
@@ -210,8 +210,8 @@ Datos: https://resultados.fedexvoleibol.com/calendar.php?grupo=147
 | 5 | 2026-11-20 | Viernes | 18:30 | INFANTIL | G.M.D. OLIVENZA A | vs | CD LA ALBUERA VOLEY A |  | P. Municipal |
 | 5 | 2026-11-22 | Domingo | Pdte-local | ALEVIN | CLUB PACENSE VOLEIBOL ALEVIN B | vs | E.D. SALESIANOS A |  | P. Municipal |
 | 5 | 2026-11-22 | Domingo | Pdte-local | CADETE | CLUB PACENSE VOLEIBOL B | vs | E.D. SALESIANOS A |  | P. Municipal |
-| 5 | 2026-11-22 | Domingo | Pdte-local | INFANTIL | CLUB PACENSE VOLEIBOL B | vs | E.D. SALESIANOS A |  | P. Municipal |
 | 5 | 2026-11-22 | Domingo | Pdte-local | JUVENIL | CLUB PACENSE VOLEIBOL B | vs | E.D. SALESIANOS A |  | P. Municipal |
+| 5 | 2026-11-22 | Domingo | Pdte-local | INFANTIL | CLUB PACENSE VOLEIBOL B | vs | E.D. SALESIANOS A |  | P. Municipal |
 | 5 | 2026-11-22 | Domingo | 10:00 | CADETE | G.M.D. OLIVENZA A | vs | CD LA ALBUERA VOLEY A |  | P. Municipal |
 | 5 | 2026-11-22 | Domingo | 12:00 | JUVENIL | G.M.D. OLIVENZA A | vs | CD LA ALBUERA VOLEY A |  | P. Municipal |
 | 6 | 2026-12-11 | Viernes | 17:00 | CADETE | ESCUELA DEPORTIVA GUADALUPE A | vs | E.D. SALESIANOS A |  | Pabellón EVG Badajoz |
@@ -226,8 +226,8 @@ Datos: https://resultados.fedexvoleibol.com/calendar.php?grupo=147
 | 7 | 2026-12-19 | Sabado | 09:30 | INFANTIL | CD LA ALBUERA VOLEY A | vs | ESCUELA DEPORTIVA GUADALUPE A |  | P. Municipal |
 | 7 | 2026-12-19 | Sabado | 11:00 | ALEVIN | CD LA ALBUERA VOLEY A | vs | ESCUELA DEPORTIVA GUADALUPE A |  | P. Municipal |
 | 7 | 2026-12-19 | Sabado | 11:30 | CADETE | CD LA ALBUERA VOLEY A | vs | ESCUELA DEPORTIVA GUADALUPE A |  | P. Municipal |
-| 7 | 2026-12-20 | Domingo | Pdte-local | ALEVIN | E.D. SALESIANOS A | vs | G.M.D. OLIVENZA A |  | P. Municipal |
 | 7 | 2026-12-20 | Domingo | Pdte-local | JUVENIL | E.D. SALESIANOS A | vs | G.M.D. OLIVENZA A |  | P. Municipal |
+| 7 | 2026-12-20 | Domingo | Pdte-local | ALEVIN | E.D. SALESIANOS A | vs | G.M.D. OLIVENZA A |  | P. Municipal |
 | 7 | 2026-12-20 | Domingo | Pdte-local | INFANTIL | E.D. SALESIANOS A | vs | G.M.D. OLIVENZA A |  | P. Municipal |
 | 7 | 2026-12-20 | Domingo | Pdte-local | CADETE | E.D. SALESIANOS A | vs | G.M.D. OLIVENZA A |  | P. Municipal |
 | 8 | 2027-01-16 | Sabado | 09:30 | INFANTIL | CD LA ALBUERA VOLEY A | vs | E.D. SALESIANOS A |  | P. Municipal |
