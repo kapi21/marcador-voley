@@ -1,5 +1,6 @@
 // Service worker: cache-first para la app, network-first para el calendario JSON.
-const VERSION = 'marcador-v8';
+// Las peticiones cross-origin (proxy FEDEXVB) NUNCA se cachean: en móvil pisaban el JSON fresco.
+const VERSION = 'marcador-v9';
 const FILES = ['./', './index.html', './manifest.webmanifest', './calendario/salesianos_alevin.json', './icons/icon-192.png', './icons/icon-512.png', './icons/icon-maskable-512.png'];
 
 self.addEventListener('install', e => {
@@ -10,14 +11,28 @@ self.addEventListener('activate', e => {
 });
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
-  if (e.request.url.includes('salesianos_alevin.json')) {
+  const url = new URL(e.request.url);
+
+  // Cross-origin (allorigins / FEDEX): solo red, sin Cache API
+  if (url.origin !== self.location.origin) {
+    e.respondWith(fetch(e.request).catch(() => new Response('', { status: 504, statusText: 'offline' })));
+    return;
+  }
+
+  // Calendario JSON: siempre red primero; caché solo si no hay red
+  if (url.pathname.endsWith('/salesianos_alevin.json') || url.pathname.endsWith('salesianos_alevin.json')) {
     e.respondWith(
-      fetch(e.request).then(r => {
-        const copy = r.clone(); caches.open(VERSION).then(c => c.put('./calendario/salesianos_alevin.json', copy)); return r;
+      fetch(e.request, { cache: 'no-store' }).then(r => {
+        if (r.ok) {
+          const copy = r.clone();
+          caches.open(VERSION).then(c => c.put('./calendario/salesianos_alevin.json', copy));
+        }
+        return r;
       }).catch(() => caches.match('./calendario/salesianos_alevin.json'))
     );
     return;
   }
+
   e.respondWith(
     caches.match(e.request, { ignoreSearch: true }).then(hit => hit || fetch(e.request).then(r => {
       const copy = r.clone(); caches.open(VERSION).then(c => c.put(e.request, copy)); return r;

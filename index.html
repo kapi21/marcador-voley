@@ -492,14 +492,14 @@ if (!(document.documentElement.requestFullscreen || document.documentElement.web
 if (matchMedia('(display-mode: fullscreen), (display-mode: standalone)').matches) document.body.classList.add('standalone');
 
 /* ---------- Calendario Partidos Pendientes (E.D. SALESIANOS A · ALEVIN) ---------- */
-const CAL_KEY = 'marcador_voley_cal_v1';
+const CAL_KEY = 'marcador_voley_cal_v2';
 const CAL_IFRAME = 'https://resultados.fedexvoleibol.com/calendar.php?grupo=147';
 let calData = [
   { jornada:1, fecha:'2026-10-16', dia:'Viernes', hora:'', local:'E.D. SALESIANOS A', resultado:'2 - 0', visitante:'ESCUELA DEPORTIVA GUADALUPE A', pabellon:'IES ZURBARAN', pendiente:false },
   { jornada:2, fecha:'2026-10-25', dia:'Domingo', hora:'', local:'G.M.D. OLIVENZA A', resultado:'2 - 1', visitante:'E.D. SALESIANOS A', pabellon:'P. Municipal', pendiente:false },
-  { jornada:3, fecha:'2026-11-07', dia:'Sabado', hora:'10:00', local:'E.D. SALESIANOS A', resultado:'vs', visitante:'CD LA ALBUERA VOLEY A', pabellon:'IES ZURBARAN', pendiente:true },
-  { jornada:4, fecha:'2026-11-15', dia:'Domingo', hora:'Pdte-local', local:'E.D. SALESIANOS A', resultado:'vs', visitante:'VOLEIBOL A7 AZUL B', pabellon:'P. Municipal', pendiente:true },
-  { jornada:5, fecha:'2026-11-22', dia:'Domingo', hora:'Pdte-local', local:'CLUB PACENSE VOLEIBOL ALEVIN B', resultado:'vs', visitante:'E.D. SALESIANOS A', pabellon:'P. Municipal', pendiente:true },
+  { jornada:3, fecha:'2026-11-07', dia:'Sabado', hora:'', local:'E.D. SALESIANOS A', resultado:'2 - 0', visitante:'CD LA ALBUERA VOLEY A', pabellon:'IES ZURBARAN', pendiente:false },
+  { jornada:4, fecha:'2026-11-14', dia:'Sabado', hora:'09:30', local:'E.D. SALESIANOS A', resultado:'vs', visitante:'VOLEIBOL A7 AZUL B', pabellon:'IES ZURBARAN', pendiente:true },
+  { jornada:5, fecha:'2026-11-22', dia:'Domingo', hora:'12:30', local:'CLUB PACENSE VOLEIBOL ALEVIN B', resultado:'vs', visitante:'E.D. SALESIANOS A', pabellon:'Pabellón Juancho Pérez', pendiente:true },
   { jornada:6, fecha:'2026-12-11', dia:'Viernes', hora:'17:00', local:'ESCUELA DEPORTIVA GUADALUPE A', resultado:'vs', visitante:'E.D. SALESIANOS A', pabellon:'Pabellón EVG Badajoz', pendiente:true },
   { jornada:7, fecha:'2026-12-20', dia:'Domingo', hora:'Pdte-local', local:'E.D. SALESIANOS A', resultado:'vs', visitante:'G.M.D. OLIVENZA A', pabellon:'P. Municipal', pendiente:true },
   { jornada:8, fecha:'2027-01-16', dia:'Sabado', hora:'11:00', local:'CD LA ALBUERA VOLEY A', resultado:'vs', visitante:'E.D. SALESIANOS A', pabellon:'P. Municipal', pendiente:true },
@@ -510,6 +510,7 @@ try {
   const savedCal = JSON.parse(localStorage.getItem(CAL_KEY));
   if (Array.isArray(savedCal) && savedCal.length) calData = savedCal;
 } catch(e){}
+localStorage.removeItem('marcador_voley_cal_v1');
 
 function shortTeamName(full){
   const u = full.toUpperCase();
@@ -591,16 +592,22 @@ function parseFedexHTML(raw){
   }
   return out;
 }
+function calPlayed(list){ return (list || []).filter(m => !m.pendiente).length; }
+function saveCal(list){
+  calData = list;
+  localStorage.setItem(CAL_KEY, JSON.stringify(calData));
+  renderCal();
+}
 async function syncCal(manual = false){
   if (manual) $('cal-status').textContent = 'Sincronizando con FEDEXVB…';
+  let fromJson = null;
   try {
     const r = await fetch('./calendario/salesianos_alevin.json?t=' + Date.now(), { cache: 'no-store' });
     if (r.ok) {
       const j = await r.json();
       if (j && Array.isArray(j.partidos) && j.partidos.length) {
-        calData = j.partidos;
-        localStorage.setItem(CAL_KEY, JSON.stringify(calData));
-        renderCal();
+        fromJson = j.partidos;
+        saveCal(fromJson);
       }
     }
   } catch(e){}
@@ -610,15 +617,18 @@ async function syncCal(manual = false){
     if (r2.ok) {
       const parsed = parseFedexHTML(await r2.text());
       if (parsed.length) {
-        calData = parsed;
-        localStorage.setItem(CAL_KEY, JSON.stringify(calData));
-        renderCal();
-        if (manual) $('cal-status').textContent = 'Actualizado en directo desde FEDEXVB · ' + new Date().toLocaleTimeString('es-ES', {hour:'2-digit', minute:'2-digit'});
-        return;
+        // No pisar el JSON fresco con una respuesta vieja del proxy (antes el SW la cacheaba en móvil)
+        if (!fromJson || calPlayed(parsed) >= calPlayed(fromJson)) {
+          saveCal(parsed);
+          if (manual) $('cal-status').textContent = 'Actualizado en directo desde FEDEXVB · ' + new Date().toLocaleTimeString('es-ES', {hour:'2-digit', minute:'2-digit'});
+          return;
+        }
       }
     }
   } catch(e){}
-  if (manual) $('cal-status').textContent = 'Calendario al día (FEDEXVB) · Toca «Cargar» para llevar al marcador';
+  if (manual) $('cal-status').textContent = fromJson
+    ? 'Calendario al día (FEDEXVB) · Toca «Cargar» para llevar al marcador'
+    : 'Sin red · mostrando última copia guardada';
 }
 
 /* ---------- Eventos ---------- */
@@ -691,7 +701,7 @@ window.addEventListener('appinstalled', () => {
   $('install-btn').classList.remove('ready');
 });
 if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
-  navigator.serviceWorker.register('sw.js').catch(()=>{});
+  navigator.serviceWorker.register('sw.js').then(reg => { reg.update().catch(()=>{}); }).catch(()=>{});
 }
 </script>
 </body>
