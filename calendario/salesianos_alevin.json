@@ -3,7 +3,7 @@
   "categoria": "ALEVIN",
   "fuente": "https://fedexvoleibol.com/calendario-tercera-femenino-gb",
   "iframe": "https://resultados.fedexvoleibol.com/calendar.php?grupo=147",
-  "actualizado": "2026-11-24T03:48:11Z",
+  "actualizado": "2026-11-24T16:57:23Z",
   "partidos": [
     {
       "jornada": 1,
@@ -57,13 +57,13 @@
       "jornada": 5,
       "fecha": "2026-11-22",
       "dia": "Domingo",
-      "hora": "12:30",
+      "hora": "",
       "local": "CLUB PACENSE VOLEIBOL ALEVIN B",
-      "resultado": "vs",
+      "resultado": "1 - 2",
       "visitante": "E.D. SALESIANOS A",
-      "sets": "",
+      "sets": "18-25/25-22/8-25",
       "pabellon": "Pabellón Juancho Pérez",
-      "pendiente": true
+      "pendiente": false
     },
     {
       "jornada": 6,
