@@ -118,10 +118,10 @@ Datos: https://resultados.fedexvoleibol.com/calendar.php?grupo=147
 | 7 | 2026-12-20 | Domingo | Pdte-local | INFANTIL | CLUB PACENSE VOLEIBOL B | vs | VOLEIBOL A7 AZUL B |  | P. Municipal |
 | 7 | 2026-12-20 | Domingo | Pdte-local | JUVENIL | CLUB PACENSE VOLEIBOL B | vs | VOLEIBOL A7 AZUL B |  | P. Municipal |
 | 7 | 2026-12-20 | Domingo | Pdte-local | CADETE | CLUB PACENSE VOLEIBOL B | vs | VOLEIBOL A7 AZUL B |  | P. Municipal |
-| 7 | 2026-12-20 | Domingo | Pdte-local | ALEVIN | E.D. SALESIANOS A | vs | G.M.D. OLIVENZA A |  | P. Municipal |
-| 7 | 2026-12-20 | Domingo | Pdte-local | INFANTIL | E.D. SALESIANOS A | vs | G.M.D. OLIVENZA A |  | P. Municipal |
-| 7 | 2026-12-20 | Domingo | Pdte-local | CADETE | E.D. SALESIANOS A | vs | G.M.D. OLIVENZA A |  | P. Municipal |
-| 7 | 2026-12-20 | Domingo | Pdte-local | JUVENIL | E.D. SALESIANOS A | vs | G.M.D. OLIVENZA A |  | P. Municipal |
+| 7 | 2026-12-20 | Sabado | 11:00 | CADETE | E.D. SALESIANOS A | vs | G.M.D. OLIVENZA A |  | IES ZURBARAN |
+| 7 | 2026-12-20 | Sabado | 12:30 | JUVENIL | E.D. SALESIANOS A | vs | G.M.D. OLIVENZA A |  | IES ZURBARAN |
+| 7 | 2026-12-20 | Viernes | 17:00 | ALEVIN | E.D. SALESIANOS A | vs | G.M.D. OLIVENZA A |  | IES ZURBARAN |
+| 7 | 2026-12-20 | Viernes | 18:00 | INFANTIL | E.D. SALESIANOS A | vs | G.M.D. OLIVENZA A |  | IES ZURBARAN |
 
 ## Jornada 8
 
@@ -226,10 +226,10 @@ Datos: https://resultados.fedexvoleibol.com/calendar.php?grupo=147
 | 7 | 2026-12-19 | Sabado | 09:30 | JUVENIL | CD LA ALBUERA VOLEY A | vs | ESCUELA DEPORTIVA GUADALUPE A |  | P. Municipal |
 | 7 | 2026-12-19 | Sabado | 11:00 | ALEVIN | CD LA ALBUERA VOLEY A | vs | ESCUELA DEPORTIVA GUADALUPE A |  | P. Municipal |
 | 7 | 2026-12-19 | Sabado | 11:30 | CADETE | CD LA ALBUERA VOLEY A | vs | ESCUELA DEPORTIVA GUADALUPE A |  | P. Municipal |
-| 7 | 2026-12-20 | Domingo | Pdte-local | ALEVIN | E.D. SALESIANOS A | vs | G.M.D. OLIVENZA A |  | P. Municipal |
-| 7 | 2026-12-20 | Domingo | Pdte-local | INFANTIL | E.D. SALESIANOS A | vs | G.M.D. OLIVENZA A |  | P. Municipal |
-| 7 | 2026-12-20 | Domingo | Pdte-local | CADETE | E.D. SALESIANOS A | vs | G.M.D. OLIVENZA A |  | P. Municipal |
-| 7 | 2026-12-20 | Domingo | Pdte-local | JUVENIL | E.D. SALESIANOS A | vs | G.M.D. OLIVENZA A |  | P. Municipal |
+| 7 | 2026-12-20 | Sabado | 11:00 | CADETE | E.D. SALESIANOS A | vs | G.M.D. OLIVENZA A |  | IES ZURBARAN |
+| 7 | 2026-12-20 | Sabado | 12:30 | JUVENIL | E.D. SALESIANOS A | vs | G.M.D. OLIVENZA A |  | IES ZURBARAN |
+| 7 | 2026-12-20 | Viernes | 17:00 | ALEVIN | E.D. SALESIANOS A | vs | G.M.D. OLIVENZA A |  | IES ZURBARAN |
+| 7 | 2026-12-20 | Viernes | 18:00 | INFANTIL | E.D. SALESIANOS A | vs | G.M.D. OLIVENZA A |  | IES ZURBARAN |
 | 8 | 2027-01-16 | Sabado | 09:30 | JUVENIL | CD LA ALBUERA VOLEY A | vs | E.D. SALESIANOS A |  | P. Municipal |
 | 8 | 2027-01-16 | Sabado | 09:30 | INFANTIL | CD LA ALBUERA VOLEY A | vs | E.D. SALESIANOS A |  | P. Municipal |
 | 8 | 2027-01-16 | Sabado | 11:00 | ALEVIN | CD LA ALBUERA VOLEY A | vs | E.D. SALESIANOS A |  | P. Municipal |

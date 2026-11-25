@@ -3,7 +3,7 @@
   "categoria": "ALEVIN",
   "fuente": "https://fedexvoleibol.com/calendario-tercera-femenino-gb",
   "iframe": "https://resultados.fedexvoleibol.com/calendar.php?grupo=147",
-  "actualizado": "2026-11-25T01:53:58Z",
+  "actualizado": "2026-11-25T16:47:04Z",
   "partidos": [
     {
       "jornada": 1,
@@ -80,13 +80,13 @@
     {
       "jornada": 7,
       "fecha": "2026-12-20",
-      "dia": "Domingo",
-      "hora": "Pdte-local",
+      "dia": "Viernes",
+      "hora": "17:00",
       "local": "E.D. SALESIANOS A",
       "resultado": "vs",
       "visitante": "G.M.D. OLIVENZA A",
       "sets": "",
-      "pabellon": "P. Municipal",
+      "pabellon": "IES ZURBARAN",
       "pendiente": true
     },
     {
