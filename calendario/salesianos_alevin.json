@@ -3,7 +3,7 @@
   "categoria": "ALEVIN",
   "fuente": "https://fedexvoleibol.com/calendario-tercera-femenino-gb",
   "iframe": "https://resultados.fedexvoleibol.com/calendar.php?grupo=147",
-  "actualizado": "2026-11-26T01:32:53Z",
+  "actualizado": "2026-11-26T16:22:34Z",
   "partidos": [
     {
       "jornada": 1,
@@ -79,7 +79,7 @@
     },
     {
       "jornada": 7,
-      "fecha": "2026-12-20",
+      "fecha": "2026-12-18",
       "dia": "Viernes",
       "hora": "17:00",
       "local": "E.D. SALESIANOS A",
